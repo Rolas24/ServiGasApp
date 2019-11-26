@@ -9,39 +9,56 @@ var mainView = app.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
     dynamicNavbar: true
 });
-mainView.router.loadPage('splash.html');
+
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-    setTimeout(function(){
-        mainView.router.loadPage('login.html');
-    }, 1000);
+
+});
+//Eventos Login
+$$("#btnIniciarSesion").click(function(e){
+    e.preventDefault();
+    app.closeModal('.login-screen');
+
+});
+$$("#btnRegistroUsuario").click(function(e){
+    e.preventDefault();
+    app.closeModal('.login-screen');
+    mainView.router.loadPage('registro.html');
+});
+$$("#btnRecuperarContraseña").click(function(e){
+    e.preventDefault();
+    app.alert("Recuperar Contraseña se");
+
+});
+
+//Eventos Main
+
+$$("#btnCerrarPanel").click(function(e){
+  e.preventDefault();
+  app.closePanel();
 });
 
 
-// Now we need to run the code that will be executed only for About page.
-
-// Option 1. Using page callback for page (for "about" page in this case) (recommended way):
-app.onPageInit('about', function (page) {
-    // Do something here for "about" page
-
-});
 
 
-$$(document).on('pageInit', function (e) {
+   $$(document).on('pageInit', function (e) {
     // Get page data from event data
     var page = e.detail.page;
 
-   if (page.name === 'about') {
+    if (page.name === 'about') {
         // Following code will be executed for page with data-page attribute equal to "about"
        // app.alert('Here comes About page');
    }else if(page.name ==='splash'){
 
-   }else if(page.name ==='login'){
-       initLogin();
+   }else if(page.name ==='main'){
+       initMain();
+   }else if(page.name ==='registro'){
+       initRegistro();
    }
 });
 
-function prueba(){
+
+   function prueba(){
     var data = {accion: "1"};
     $$.ajax({url: 'http://82.223.50.46/GBBdev/public_html/controlador/test.php', dataType: "json", type: 'POST', data,
         beforeSend: function () {
@@ -55,4 +72,3 @@ function prueba(){
         }
     });
 }
-
