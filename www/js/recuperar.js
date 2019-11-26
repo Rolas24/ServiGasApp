@@ -1,12 +1,10 @@
-function initRegistro(){
-	$$("#btnRegresarLogin").click(function(e){
-		window.localStorage.setItem("key", "rolitas");
+function initRecuperar(){
+	$$("#btnRegresarLogin2").click(function(e){
 		e.preventDefault();
 		app.loginScreen();
 		setTimeout(function () {
 			mainView.router.back();		
 		}, 380);
-
 		
 	});
 }

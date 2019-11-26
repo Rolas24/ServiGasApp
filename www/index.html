@@ -52,10 +52,10 @@
                     <div class="content-block-title">Menu</div>
                     <div class="item-media"><i id="btnCerrarPanel" class="icon f7-icons">arrow_left</i></div>
                     <p><a href="#">Cambiar contraseña</a></p>
-                    <p><a href="#">Modificar mi domicilio</a></p>
+                    <p><a href="#">Modificar mis datos</a></p>
                     <p><a href="#">Reportar un problema</a></p>
                     <p><a href="#">Promociones</a></p>
-                    <p><a href="#">Cerrar Sesión</a></p>
+                    <p><a id="btnCerrarSesion" href="#">Cerrar Sesión</a></p>
                 </div>
             </div>
 
@@ -74,9 +74,9 @@
                         </div>
                     </div>
                     <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-                    <div class="pages navbar-through toolbar-through">
+                    <div class="pages navbar-through toolbar-through" >
                         <!-- Page, "data-page" contains page name -->
-                        <div data-page="index" class="page">
+                        <div data-page="index" class="page" >
                             <!-- Scrollable page content -->
                             <div class="page-content">
                               <div class="content-block">
@@ -99,73 +99,79 @@
                                     <div class="row no-gutter">
                                         <!-- Each "cell" has col-[widht in percents] class -->
                                         <div class="col-50">
-                                            <img src="img/btn-estacionario.png"  height="100" width="100"/>
-                                        </div>
-                                        <div class="col-50">
-                                            <img src="img/btn-cilindro.png"  height="100" width="100"/>
-                                        </div>
-                                    </div>   
-                                    <div class="row no-gutter">
-                                        <div class="col-50">
-                                            <img src="img/btn-whatsapp.png"  height="100" width="100"/>
-                                        </div>
-                                        <div class="col-50">
-                                            <img src="img/btn-llamar.png"  height="100" width="100"/>
-                                        </div>
+                                         <center>
+                                            <img id="btnPedidoEstacionario" src="img/btn-estacionario.png"  height="130" width="130"/>
+                                        </center> 
+                                     </div>
+                                     <div class="col-50">
+                                        <center> <img id="btnPedidoCilindro" src="img/btn-cilindro.png"  height="130" width="130"/></center>
+                                    </div>
+                                </div>   
+                                <div class="row no-gutter">
+                                    <div class="col-50">
+                                        <center>
+                                            <img id="btnPedidoWhatsapp" src="img/btn-whatsapp.png"  height="130" width="130"/>
+                                        </center>
+                                    </div>
+                                    <div class="col-50">
+                                        <center>
+                                            <img id="btnPedidoLlamar" src="img/btn-llamar.png"  height="130" width="130"/>
+                                        </center>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Tab 2 -->
-                            <div id="tab2" class="tab">
-                              <div class="content-block">
-                                <p>This is tab 2 content</p>
-                                ...
-                            </div>
                         </div>
-                        <!-- Tab 3 -->
-                        <div id="tab3" class="tab">
+                        <!-- Tab 2 -->
+                        <div id="tab2" class="tab">
                           <div class="content-block">
-                            <p>This is tab 3 content</p>
+                            <p>This is tab 2 content</p>
                             ...
                         </div>
                     </div>
+                    <!-- Tab 3 -->
+                    <div id="tab3" class="tab">
+                      <div class="content-block">
+                        <p>This is tab 3 content</p>
+                        ...
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- Bottom Toolbar-->
-        <div class="toolbar">
-            <div class="toolbar-inner">
-
-                <a href="#" class="link">Link 1</a>
-                <a href="#" class="link">Link 2</a>
             </div>
         </div>
     </div>
-    <div class="login-screen modal-in">
-      <div class="view">
-        <div data-page="login" class="page no-navbar layout-dark">
-          <div class="page-content login-screen-content">
-            <div class="login-screen-title">Titulo</div>
-            <form>
-              <div class="list-block">
-                <ul>
-                  <li class="item-content">
-                    <div class="item-inner">
-                      <div class="item-title label">Usuario</div>
-                      <div class="item-input">
-                        <input type="text" name="username" placeholder="Usuario/email/telefono">
-                    </div>
-                </div>
-            </li>
-            <li class="item-content">
+    <!-- Bottom Toolbar-->
+    <div class="toolbar">
+        <div class="toolbar-inner">
+
+            <a href="#" class="link">Link 1</a>
+            <a href="#" class="link">Link 2</a>
+        </div>
+    </div>
+</div>
+<div class="login-screen modal-in no-animation">
+  <div class="view">
+    <div data-page="login" class="page no-navbar layout-dark">
+      <div class="page-content login-screen-content">
+        <div class="login-screen-title"><img src="img/main-logo.png"  height="70" width="120"/> </div>
+        <form>
+          <div class="list-block">
+            <ul>
+              <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label">Contraseña</div>
+                  <div class="item-title label">Usuario</div>
                   <div class="item-input">
-                    <input type="password" name="password" placeholder="Ingresa tu contraseña">
+                    <input type="text" name="username" placeholder="Usuario/email/telefono">
                 </div>
             </div>
         </li>
-    </ul>
+        <li class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Contraseña</div>
+              <div class="item-input">
+                <input type="password" name="password" placeholder="Ingresa tu contraseña">
+            </div>
+        </div>
+    </li>
+</ul>
 </div>
 <div class="list-block">
     <ul>
@@ -175,8 +181,7 @@
       <p>¿Aun no estas registrado?</p>
       <a id="btnRegistroUsuario" href="#" class="item-link list-button bg-black">Registrate aqui.</a>
       <p>¿Olvidaste Tu usuario y/o contraseña?</p>
-      <a id="btnRecuperarContraseña" href="#" class="item-link list-button bg-black">Recuperala aqui.</a>
-      <p><a href="#" class="close-login-screen"></a></p>
+      <a id="btnRecuperarContrasenia" class="item-link list-button bg-black">Recuperala aqui.</a>
   </div>
 </div>
 </form>
@@ -185,11 +190,11 @@
 </div>
 </div>
 
-
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
 <script type="text/javascript" src="js/my-app.js"></script>
 <script type="text/javascript" src="js/registro.js"></script>
+<script type="text/javascript" src="js/recuperar.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 
