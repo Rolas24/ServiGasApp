@@ -1,5 +1,5 @@
 <div class="popup popup-services">
-	<div class="content-block">
+	<div class="content-block theme-red">
 		<div class="content-block-title">Detalle Pedido</div>
 		<div class="list-block">
 			<ul>
@@ -9,110 +9,82 @@
 						<div class="item-inner">
 							<div class="item-title label">Nombre</div>
 							<div class="item-input">
-								<input type="text">
+								<input id="txtPedNombre" type="text" disabled>
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">person</i></div>
+						<div class="item-media"><i class="icon f7-icons">location</i></div>
 						<div class="item-inner">
 							<div class="item-title label">Direccion</div>
 							<div class="item-input">
-								<input type="text">
+								<input id="txtPedDireccion" type="text" disabled>
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">email</i></div>
+						<div class="item-media"><i class="icon f7-icons">device_phone_portrait</i></div>
 						<div class="item-inner">
 							<div class="item-title label">Telefono</div>
 							<div class="item-input">
-								<input type="email" placeholder="E-mail">
+								<input id="txtPedTelefono" type="text" >
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">email</i></div>
+						<div class="item-media"><i class="icon f7-icons">envelope</i></div>
 						<div class="item-inner">
 							<div class="item-title label">E-mail</div>
 							<div class="item-input">
-								<input type="email" placeholder="E-mail">
+								<input id="txtPedCorreo" type="email"  disabled>
 							</div>
 						</div>
 					</div>
 				</li>
-				
-				...
-				<!-- Select -->
+				<p><small>(*Revise que sus datos esten actualizados)</small></p>
+				<div class="content-block-title">Su Pedido</div>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">persons</i></div>
+						<div class="item-media"><i class="icon f7-icons">chat_bubble_text_fill</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Gender</div>
+							<div class="item-title label">Tipo</div>
 							<div class="item-input">
-								<select>
-									<option>Male</option>
-									<option>Female</option>
+								<select id="sltTipoPedido" disabled="">
+									<option val="1">Estacionario</option>
+									<option val="2">Cilindro</option>
 								</select>
 							</div>
 						</div>
 					</div>
 				</li>
-				<!-- Date -->
-				<li>
+				<li id="contLitros">
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">calendar</i></div>
+						<div class="item-media"><i class="icon f7-icons">suit_diamond_fill</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Birth date</div>
+							<div class="item-title label">Litros</div>
 							<div class="item-input">
-								<input type="date" placeholder="Birth day" value="2014-04-30">
+								<input id="txtLitros" type="text"placeholder="(Opcional)" >
 							</div>
 						</div>
 					</div>
 				</li>
-				<!-- Date time-->
-				<li>
+				<li id="contTipoCilindro">
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">calendar</i></div>
+						<div class="item-media"><i class="icon f7-icons">chart_bar_square_fill</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Date time</div>
+							<div class="item-title label">Tamaño</div>
 							<div class="item-input">
-								<input type="datetime-local">
-							</div>
-						</div>
-					</div>
-				</li>
-				<!-- Switch (Checkbox) -->
-				<li>
-					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">check</i></div>
-						<div class="item-inner">
-							<div class="item-title label">Switch</div>
-							<div class="item-input">
-								<label class="label-switch">
-									<input type="checkbox">
-									<div class="checkbox"></div>
-								</label>
-							</div>
-						</div>
-					</div>
-				</li>
-				<!-- Slider (Range input) -->
-				<li>
-					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">filter</i></div>
-						<div class="item-inner">
-							<div class="item-title label">Slider</div>
-							<div class="item-input">
-								<div class="range-slider">
-									<input type="range" min="0" max="100" value="50" step="0.1">
-								</div>
+								<select id="sltTipoCilindro">
+									<option val="30">30 kg.</option>
+									<option val="45">45 kg.</option>
+									<option val="15">15 kg.</option>
+								</select>
 							</div>
 						</div>
 					</div>
@@ -122,15 +94,16 @@
 					<div class="item-content">
 						<div class="item-media"><i class="icon f7-icons">chat</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Textarea</div>
+							<div class="item-title label">Observaciones</div>
 							<div class="item-input">
-								<textarea></textarea>
+								<input id="txtObservaciones" type="text"placeholder="(Opcional)" >
 							</div>
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
-				<p><a href="#" class="close-popup">Cancelar Solicitud</a></p>
+		<a href="#" class="button button-big button-round active">Pedir Ahora!</a> 
+		<p><a href="#" class="close-popup">Cancelar Solicitud</a></p>
 	</div>
 </div>

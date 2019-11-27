@@ -1,4 +1,10 @@
-userLoggedIn=false;
+var sNombre="";
+var sTelefono="";
+var sDireccion="";
+var sCorreo="";
+var sUsuario="";
+var sPass="";
+var sURL="";
 // Initialize app
 var app = new Framework7();
 
@@ -12,8 +18,7 @@ var mainView = app.addView('.view-main', {
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-  var value = window.localStorage.getItem("key");
-  app.alert("pff: "+value);
+
 });
 
 $$(document).on('pageInit', function (e) {
@@ -38,6 +43,7 @@ $$(document).on('pageInit', function (e) {
 //Eventos Login
 $$("#btnIniciarSesion").click(function(e){
   e.preventDefault();
+  iniciarSesion();
   app.showPreloader('Iniciando Sesión...')
   setTimeout(function () {
     app.hidePreloader();
@@ -85,18 +91,54 @@ $$("#btnPedidoCilindro").click(function(e){
 });
 $$("#btnPedidoWhatsapp").click(function(e){
   e.preventDefault();
-  pedido(3);
+  pedidoWhatsapp(3);
 });
 $$("#btnPedidoLlamar").click(function(e){
   e.preventDefault();
-  pedido(4);
+  pedidoLlamar(4);
 });
+
+function iniciarSesion(){
+  if(validarInicioSesion()){
+    sNombre = window.localStorage.getItem("sgNombre");
+    sDireccion = window.localStorage.getItem("sgDireccion");
+    sTelefono = window.localStorage.getItem("sgTelefono");
+    sCorreo = window.localStorage.getItem("sgCorreo");
+    sURL = window.localStorage.getItem("sgURLSucursal");
+    sUsuario=window.localStorage.getItem("sgUsuario");
+    sPass = window.localStorage.getItem("sgPass");
+    $$("#txtPnlUsuario").text(sUsuario);
+    $$("#txtPnlNombre").text(sNombre);
+    
+  }
+}
 
 function pedido(pedido){
   $$.get('detallePedido.html',function(data){
    app.popup(data);
- });
+   $$("#txtPedNombre").val(sNombre);
+   $$("#txtPedDireccion").val(sDireccion);
+   $$("#txtPedTelefono").val(sTelefono);
+   $$("#txtPedCorreo").val(sCorreo);
+   if(pedido===1){
+     $$("#contTipoCilindro").hide();
+     $$("#sltTipoPedido").val("Estacionario");
+   }else if(pedido===2){
+     $$("#contLitros").hide();
+     $$("#sltTipoPedido").val("Cilindro");
+   }
+});
 
+}
+function pedidoWhatsapp(){
+
+}
+function pedidoLlamar(){
+
+}
+
+function validarInicioSesion(){
+  return true;
 }
 
 
