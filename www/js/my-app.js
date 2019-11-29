@@ -38,7 +38,6 @@ $$(document).on('pageInit', function (e) {
      }else if(page.name === 'modificarDatos'){
        initModificarDatos();
      }else if(page.name === 'modificarDomicilio'){    
-     app.alert("rolas");  
       var map = new GoogleMap();
       map.initialize();
     }
