@@ -9,96 +9,201 @@
             * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+              -->
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+          <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; media-src *">-->
 
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
+          <meta http-equiv="Content-Security-Policy" content="default-src *; style-src * 'unsafe-inline'; script-src * 'unsafe-inline'; media-src *; img-src * data:;" />
 
-    <!-- Your app title -->
-    <title>My App</title>
+          <!-- Required meta tags-->
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+          <meta name="apple-mobile-web-app-capable" content="yes">
+          <meta name="apple-mobile-web-app-status-bar-style" content="black">
+          <meta name="format-detection" content="telephone=no">
+          <meta name="msapplication-tap-highlight" content="no">
+          <title>Servigas</title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
-     -->
+      -->
+      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCXmTKa8vi3rJManvt6EpTJ40ul8BaGrHw&amp"></script>
+    </script>
+      <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+      <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+        <!--<link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
+          <link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">-->
+          <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
 
-    <!-- <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">-->
-    <link rel="stylesheet" href="lib/framework7/css/framework7.material.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7.material.colors.min.css">
-    <link rel="stylesheet" href="lib/framework7/css/framework7-icons.css">
+          <link rel="stylesheet" href="css/styles.css">
+        </head>
 
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+        <body>
+          <!-- Status bar overlay for full screen mode (PhoneGap) -->
+          <div class="statusbar-overlay"></div>
 
-<body class="layout-dark">
-    <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
+          <!-- Panels overlay-->
+          <div class="panel-overlay"></div>
+          <!-- Left panel with reveal effect-->
+          <div class="panel panel-left panel-reveal">
+            <div class="content-block">
+              <div class="content-block-title">Menu</div>
+              <div class="item-media"><i id="btnCerrarPanel" class="icon f7-icons">arrow_left</i></div>
+              <center> <img src="img/perfil.png" height="60" width="60" />
+                <p><strong id="txtPnlUsuario"></strong><br>
+                  <small id="txtPnlNombre"></small></p></center> 
+                  <p><a href="cambiarpass.html">Cambiar contraseña</a></p>
+                  <p><a href="modificarDatos.html">Modificar mis datos</a></p>
+                  <p><a id="btnModificarDomicilio" href="#">Actualizar mi Domicilio</a></p>
+                  <p><a href="reportarProblema.html">Reportar un problema</a></p>
+                  <p><a href="#">Promociones</a></p>
+                  <p><a id="btnCerrarSesion" href="#">Cerrar Sesión</a></p>
+                </div>
+              </div>
 
-    <!-- Panels overlay-->
-    <div class="panel-overlay"></div>
-    <!-- Left panel with reveal effect-->
-    <div class="panel panel-left panel-reveal">
-        <div class="content-block">
-            <p>Left panel content goes here</p>
-        </div>
-    </div>
-
-    <!-- Views -->
-    <div class="views">
-        <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main">
-            <!-- Top Navbar-->
-            <div class="navbar" style="display:none;">
-                <div class="navbar-inner">
-                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">Servigas</div>
-                    <div class="right">
-                        <!--
-                          Right link contains only icon - additional "icon-only" class
-                          Additional "open-panel" class tells app to open panel when we click on this link
-                        -->
+              <!-- Views -->
+              <div class="views">
+                <!-- Your main view, should have "view-main" class -->
+                <div class="view view-main theme-red">
+                  <!-- Top Navbar-->
+                  <div class="navbar bg-black">
+                    <div class="navbar-inner">
+                      <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                      <div class="left"><img src="img/main-logo.png"  height="30" width="50"/></div>
+                      <div class="right">
                         <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                      </div>
                     </div>
-                </div>
-            </div>
-            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-            <div class="pages navbar-through toolbar-through">
-                <!-- Page, "data-page" contains page name -->
-                <div data-page="index" class="page">
-                    <!-- Scrollable page content -->
-                    <div class="page-content">
+                  </div>
+                  <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+                  <div class="pages navbar-through toolbar-through" >
+                    <!-- Page, "data-page" contains page name -->
+                    <div data-page="index" class="page" >
+                      <!-- Scrollable page content -->
+                      <div class="page-content">
                         <div class="content-block">
-                            <p>Page content goes here</p>
-                            <!-- Link to another page -->
-                            <a href="about.html" >About app</a>
-                            <a href="splash.html">splah app</a>
+                          <div class="buttons-row">
+                            <!-- Link to 1st tab, active -->
+                            <a href="#tab1" class="tab-link active button">Solicitar</a>
+                            <!-- Link to 2nd tab -->
+                            <a href="#tab2" class="tab-link button">Mis pedidos</a>
+                            <!-- Link to 3rd tab -->
+                            <a href="#tab3" class="tab-link button">Datos</a>
+                          </div>
                         </div>
+                        <!-- Tabs, tabs wrapper -->
+                        <div class="tabs-animated-wrap">
+                          <div class="tabs">
+                            <!-- Tab 1, active by default -->
+                            <div id="tab1" class="tab active">
+                              <div class="content-block">
+                                <p><center>Selecciona tu opción favorita</center></p>
+                                <div class="row no-gutter">
+                                  <!-- Each "cell" has col-[widht in percents] class -->
+                                  <div class="col-50">
+                                   <center>
+                                    <img id="btnPedidoEstacionario" src="img/btn-estacionario.png"  height="130" width="130"/>
+                                  </center> 
+                                </div>
+                                <div class="col-50">
+                                  <center> <img id="btnPedidoCilindro" src="img/btn-cilindro.png"  height="130" width="130"/></center>
+                                </div>
+                              </div>   
+                              <div class="row no-gutter">
+                                <div class="col-50">
+                                  <center>
+                                    <img id="btnPedidoWhatsapp" src="img/btn-whatsapp.png"  height="130" width="130"/>
+                                  </center>
+                                </div>
+                                <div class="col-50">
+                                  <center>
+                                    <img id="btnPedidoLlamar" src="img/btn-llamar.png"  height="130" width="130"/>
+                                  </center>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Tab 2 -->
+                          <div id="tab2" class="tab">
+                            <div class="content-block">
+                              <p>This is tab 2 content</p>
+                              ...
+                            </div>
+                          </div>
+                          <!-- Tab 3 -->
+                          <div id="tab3" class="tab">
+                            <div class="content-block">
+                              <p>This is tab 3 content</p>
+                              ...
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-            <!-- Bottom Toolbar-->
-            <!--<div class="toolbar">
-                <div class="toolbar-inner">
-  
-                    <a href="#" class="link">Link 1</a>
-                    <a href="#" class="link">Link 2</a>
-                </div>-->
-            </div>
-        </div>
-    </div>
+                    <!-- Bottom Toolbar-->
+                    <div class="toolbar">
+                      <div class="toolbar-inner">
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
-    <script type="text/javascript" src="js/my-app.js"></script>
-     <script type="text/javascript" src="js/login.js"></script>
-</body>
+                        <a href="#" class="link">Link 1</a>
+                        <a href="#" class="link">Link 2</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="login-screen modal-in no-animation">
+                    <div class="view">
+                      <div data-page="login" class="page no-navbar layout-dark">
+                        <div class="page-content login-screen-content">
+                          <div class="login-screen-title"><img src="img/main-logo.png"  height="70" width="120"/> </div>
+                          <form>
+                            <div class="list-block">
+                              <ul>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title label">Usuario</div>
+                                    <div class="item-input">
+                                      <input id="txtLoginUsuario" type="text" name="username" placeholder="Usuario/email/telefono">
+                                    </div>
+                                  </div>
+                                </li>
+                                <li class="item-content">
+                                  <div class="item-inner">
+                                    <div class="item-title label">Contraseña</div>
+                                    <div class="item-input">
+                                      <input id="txtLoginPass" type="password" name="password" placeholder="Ingresa tu contraseña">
+                                    </div>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="list-block">
+                              <ul>
+                                <li><a id="btnIniciarSesion" href="#" class="item-link list-button">Iniciar Sesión</a></li>
+                              </ul>
+                              <div class="list-block-label">
+                                <p>¿Aun no estas registrado?</p>
+                                <a id="btnRegistroUsuario" href="#" class="item-link list-button bg-black">Registrate aqui.</a>
+                                <p>¿Olvidaste Tu usuario y/o contraseña?</p>
+                                <a id="btnRecuperarContrasenia" class="item-link list-button bg-black">Recuperala aqui.</a>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-</html>
+                  <script type="text/javascript" src="cordova.js"></script>
+                  <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+                  <script type="text/javascript" src="js/my-app.js"></script>
+                  <script type="text/javascript" src="js/session.js"></script>
+                  <script type="text/javascript" src="js/registro.js"></script>
+                  <script type="text/javascript" src="js/recuperar.js"></script>
+                  <script type="text/javascript" src="js/generales.js"></script>
+                  <script type="text/javascript" src="js/cambiarpass.js"></script>
+                  <script type="text/javascript" src="js/modificarDatos.js"></script>
+                  <script type="text/javascript" src="js/reportarProblema.js"></script>
+                  <script type="text/javascript" src="js/modificarDomicilio.js"></script>
+                </body>
+
+                </html>

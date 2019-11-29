@@ -1,191 +1,177 @@
-  <div class="view">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="left">
-          <a href="#" class="back link">
-            <i class="icon icon-back"></i>
-            <span>Back</span>
-          </a>
-        </div>
-        <div class="center sliding">About</div>
-        <div class="right">
-          <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-        </div>
-      </div>
-    </div>
-    <div data-page="login" class="page">
-      <div class="page-content login-screen-content">
-        <center><div class="content-block-title">R e g i s t r o   S e r v i g a s</div></center>
-        <div class="list-block">
-          <ul>
-            <!-- Text inputs -->
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">person</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Nombre</div>
-                  <div class="item-input">
-                    <input type="text" placeholder="Ingrese su Nombre">
-                  </div>
+ <div class="navbar">
+  <div class="navbar-inner">
+  </div>
+</div>   
+<div class="pages">
+  <div data-page="registro" class="page layout-dark no-navbar">
+    <div class="page-content">
+      <center>
+      <div class="content-block-title">
+       <div class="item-media"><i id="btnRegresarLogin" class="icon f7-icons">arrow_left</i></div>
+      R e g i s t r o </div></center>
+      <div class="list-block">
+        <ul>
+          <!-- Text inputs -->
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">person</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Nombre</div>
+                <div class="item-input">
+                  <input id="txtRegNombre" type="text" placeholder="Ingrese su Nombre">
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">envelope</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Correo</div>
-                  <div class="item-input">
-                    <input type="email" placeholder="ejemplo@servigas.com">
-                  </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">envelope</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Correo</div>
+                <div class="item-input">
+                  <input id="txtRegCorreo" type="email" placeholder="ejemplo@servigas.com">
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">device_phone_portrait</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Telefono</div>
-                  <div class="item-input">
-                    <input type="tel" placeholder="Número de Telefono">
-                  </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">device_phone_portrait</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Telefono</div>
+                <div class="item-input">
+                  <input id="txtRegTelefono" type="tel" placeholder="Número de Telefono">
                 </div>
               </div>
-            </li>
-            <center><div class="content-block-title">U S U A R I O</div></center>
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">person</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Usuario</div>
-                  <div class="item-input">
-                    <input type="text" placeholder="Cree un nombre de usuario">
-                  </div>
+            </div>
+          </li>
+          <center><div class="content-block-title">U S U A R I O</div></center>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">person</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Usuario</div>
+                <div class="item-input">
+                  <input id="txtRegUsuario" type="text" placeholder="Cree un nombre de usuario">
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">lock_circle</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Contraseña</div>
-                  <div class="item-input">
-                    <input type="password" placeholder="Cree una contraseña">
-                  </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">lock_circle</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Contraseña</div>
+                <div class="item-input">
+                  <input id="txtRegContrasenia" type="password" placeholder="Cree una contraseña">
                 </div>
               </div>
-            </li>
-            <li>
-              <div class="item-content">
-                <div class="item-media"><i class="icon f7-icons">lock_circle</i></div>
-                <div class="item-inner">
-                  <div class="item-title label">Repetir</div>
-                  <div class="item-input">
-                    <input type="password" placeholder="Repita su contraseña">
-                  </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content">
+              <div class="item-media"><i class="icon f7-icons">lock_circle</i></div>
+              <div class="item-inner">
+                <div class="item-title label">Repetir</div>
+                <div class="item-input">
+                  <input id="txtRegRepetir" type="password" placeholder="Repita su contraseña">
                 </div>
               </div>
-            </li>
-            <center><div class="content-block-title">C I U D A D</div></center>
-            <li>
-              <label class="label-radio item-content">
-                <!-- Checked by default -->
-                <input type="radio" name="my-radio" value="Books" checked="checked">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Chihuahua</div>
-                </div>
-              </label>
-            </li>
-            <!-- Another radio input -->
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Cuauhtemoc</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Delicias</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Camargo</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Jimenez</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Parral</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Cgrandes</div>
-                </div>
-              </label>
-            </li>
-            <li>
-              <label class="label-radio item-content">
-                <input type="radio" name="my-radio" value="Movies">
-                <div class="item-media">
-                  <i class="icon icon-form-radio"></i>
-                </div>
-                <div class="item-inner">
-                  <div class="item-title">Juarez</div>
-                </div>
-              </label>
-            </li>
+            </div>
+          </li>
+         <!-- <center><div class="content-block-title">C I U D A D</div></center>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="1" checked="checked">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Chihuahua</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="2">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Cuauhtemoc</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="3">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Delicias</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="4">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Camargo</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="5">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Jimenez</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="6">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Parral</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="7">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Cgrandes</div>
+              </div>
+            </label>
+          </li>
+          <li>
+            <label class="label-radio item-content">
+              <input type="radio" name="my-radio" value="8">
+              <div class="item-media">
+                <i class="icon icon-form-radio"></i>
+              </div>
+              <div class="item-inner">
+                <div class="item-title">Juarez</div>
+              </div>
+            </label>
+          </li>-->
+        </ul>
 
-            <li>
-              <div class="item-content">
-                <center><a href="#" class="button button-fill color-blue button-round">Registrarme</a></center>
-              </div>
-            </li>
-          </ul>
-          
-        </div>
       </div>
+      <a id="btnRegistrarCliente" href="#" class="button button-big button-round active">Registrarme</a>
     </div>
   </div>
+</div>

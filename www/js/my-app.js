@@ -11,6 +11,7 @@ var mainView = app.addView('.view-main', {
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
+  assh();
   if(sUsuario.length>0){
     app.closeModal('.login-screen');
   }if(sURL.length===0){
@@ -37,7 +38,8 @@ $$(document).on('pageInit', function (e) {
        initCambiarPass();
      }else if(page.name === 'modificarDatos'){
        initModificarDatos();
-     }else if(page.name === 'modificarDomicilio'){      
+     }else if(page.name === 'modificarDomicilio'){    
+     app.alert("rolas");  
       var map = new GoogleMap();
       map.initialize();
     }

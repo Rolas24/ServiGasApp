@@ -15,6 +15,12 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.rolas.servigasapp"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.rolas.servigasapp"
+        },
+        "cordova-plugin-request-location-accuracy": {
+            "PACKAGE_NAME": "com.rolas.servigasapp"
         }
     },
     "dependent_plugins": {}

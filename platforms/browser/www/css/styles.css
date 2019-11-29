@@ -8,8 +8,13 @@
    in the config.xml file and will be added by the CLI when you build locally.
 
    See https://github.com/apache/cordova-plugin-statusbar
-*/
+   */
 
-.statusbar-overlay {
-    background: #000000;
-}
+   .statusbar-overlay {
+   	background: #000000;
+   }
+   html, body, #map_canvas {
+   	height: 100%;
+   	margin: 0;
+   	padding: 0;
+   }

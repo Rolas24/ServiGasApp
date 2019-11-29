@@ -1,5 +1,4 @@
 function GoogleMap(){
-
 	this.initialize = function(){
 		var map = showMap();
 	}
