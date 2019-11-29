@@ -1,13 +1,6 @@
-var sNombre="";
-var sTelefono="";
-var sDireccion="";
-var sCorreo="";
-var sUsuario="";
-var sPass="";
-var sURL="";
+
 // Initialize app
 var app = new Framework7();
-
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
@@ -18,7 +11,11 @@ var mainView = app.addView('.view-main', {
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-
+  if(sUsuario.length>0){
+    app.closeModal('.login-screen');
+  }if(sURL.length===0){
+    modalSucursal();
+  }
 });
 
 $$(document).on('pageInit', function (e) {
@@ -36,19 +33,23 @@ $$(document).on('pageInit', function (e) {
        initRegistro();
      }else if(page.name === 'recuperar'){
        initRecuperar();
-     }
-   });
-
+     }else if(page.name==='cambiarpass'){
+       initCambiarPass();
+     }else if(page.name === 'modificarDatos'){
+       initModificarDatos();
+     }else if(page.name === 'modificarDomicilio'){      
+      var map = new GoogleMap();
+      map.initialize();
+    }
+  });
+function onBackKeyDown() {
+ app.alert("okidoki");
+}
 
 //Eventos Login
 $$("#btnIniciarSesion").click(function(e){
   e.preventDefault();
   iniciarSesion();
-  app.showPreloader('Iniciando Sesión...')
-  setTimeout(function () {
-    app.hidePreloader();
-  }, 200);
-  app.closeModal('.login-screen');
 
 });
 $$("#btnRegistroUsuario").click(function(e){
@@ -74,8 +75,12 @@ $$("#btnCerrarPanel").click(function(e){
   e.preventDefault();
   app.closePanel();
 });
+$$("#btnModificarDomicilio").click(function(e){
+ mainView.router.loadPage('modificarDomicilio.html');
+});
 $$("#btnCerrarSesion").click(function(e){
   e.preventDefault();
+  cerrarSesion();
   app.closePanel();
   app.loginScreen();
 });
@@ -91,7 +96,8 @@ $$("#btnPedidoCilindro").click(function(e){
 });
 $$("#btnPedidoWhatsapp").click(function(e){
   e.preventDefault();
-  pedidoWhatsapp(3);
+  app.alert("jaja");
+  pedidoWhatsapp();
 });
 $$("#btnPedidoLlamar").click(function(e){
   e.preventDefault();
@@ -100,17 +106,40 @@ $$("#btnPedidoLlamar").click(function(e){
 
 function iniciarSesion(){
   if(validarInicioSesion()){
-    sNombre = window.localStorage.getItem("sgNombre");
-    sDireccion = window.localStorage.getItem("sgDireccion");
-    sTelefono = window.localStorage.getItem("sgTelefono");
-    sCorreo = window.localStorage.getItem("sgCorreo");
-    sURL = window.localStorage.getItem("sgURLSucursal");
-    sUsuario=window.localStorage.getItem("sgUsuario");
-    sPass = window.localStorage.getItem("sgPass");
-    $$("#txtPnlUsuario").text(sUsuario);
-    $$("#txtPnlNombre").text(sNombre);
-    
+    var data = {accion: "5",usuario:$$("#txtLoginUsuario").val(),contrasena:$$("#txtLoginPass").val()};
+    $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+     beforeSend: function () {
+       app.showPreloader('Iniciando Sesión...');
+     },
+     success: function (data) {
+      if(data.length>0){
+       setLocalStorage(data[0].razonsocial,data[0].correo,data[0].telefono_celular,
+         $$("#txtLoginUsuario").val(),$$("#txtLoginPass").val(),data[0].idSucursal,
+         data[0].idCliente);
+       setSession();
+       $$("#txtPnlUsuario").text($$("#txtLoginUsuario").val());
+       $$("#txtPnlNombre").text(data[0].razonSocial);  
+       $$("#txtLoginUsuario").val("");
+       $$("#txtLoginPass").val("");
+       app.closeModal('.login-screen');
+     }else{
+
+      app.alert("El usuario/contraseña que ingresaste no pertenecen a ninguna cuenta. Comprueba los datos.","Error!");
+    }
+    app.hidePreloader();
+  },
+  error: function (e) {
+    app.hidePreloader();
+    app.alert("Ocurrió un error al iniciar sesión. Intente nuevamente.","Error!");
   }
+});
+
+  }
+}
+
+function cerrarSesion(){
+  clearStorage();
+  modalSucursal();
 }
 
 function pedido(pedido){
@@ -127,35 +156,22 @@ function pedido(pedido){
      $$("#contLitros").hide();
      $$("#sltTipoPedido").val("Cilindro");
    }
-});
+ });
 
 }
 function pedidoWhatsapp(){
-
+  app.alert("whats");
 }
 function pedidoLlamar(){
 
 }
 
+
 function validarInicioSesion(){
-  return true;
-}
-
-
-function prueba(){
-  var data = {accion: "1"};
-  
-  //http://82.223.50.46/GBBdev/public_html/controlador/test.php
-  $$.ajax({url: 'http://mcomplejo.dyndns.org/wServiceApp.php/obtenerCalles', dataType: "html", type: 'POST', data,
-    beforeSend: function () {
-
-    },
-    success: function (data) {
-      app.alert(data);
-    },
-    error: function (e) {
-      //var err = eval("(" + e.responseText + ")");
-      alert(e.responseText );
-    }
-  });
+  var bnd=true;
+  bnd=bnd && validInputVacio($$("#txtLoginUsuario"),"Usuario");
+  bnd=bnd && validInputVacio($$("#txtLoginPass"),"Contraseña");
+  bnd=bnd && validInputMaxMin($$("#txtLoginUsuario"),6,"Usuario");
+  bnd=bnd && validInputMaxMin($$("#txtLoginPass"),6,"Contraseña");
+  return bnd;
 }

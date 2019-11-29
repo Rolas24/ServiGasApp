@@ -12,14 +12,31 @@ function initRegistro(){
 
 function guardarCliente(){
 	if(validarCliente()){
-		app.alert("Registrado correctamente ahora puede iniciar sesión","Exito!");
-		window.localStorage.setItem("sgNombre", $$("#txtRegNombre").val());
-		window.localStorage.setItem("sgCorreo", $$("#txtRegCorreo").val());
-		window.localStorage.setItem("sgTelefono", $$("#txtRegTelefono").val());
-		window.localStorage.setItem("sgUsuario", $$("#txtRegUsuario").val());
-		window.localStorage.setItem("sgPass", $$("#txtRegContrasenia").val());
-		window.localStorage.setItem("sgURLSucursal", getSucursal($$("input[name='my-radio']:checked").val()));
-	    regresarLogin();
+		var data = {accion: "1",razonSocial:$$("#txtRegNombre").val(),telefonoCelular:$$("#txtRegTelefono").val(),
+	                correo:$$("#txtRegCorreo").val(),usuario:$$("#txtRegUsuario").val(),contrasena:$$("#txtRegContrasenia").val()};
+		
+		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+			beforeSend: function () {
+				app.showPreloader('Guardando...')
+			},
+			success: function (data) {
+				if(data.length>0){					
+					app.alert("Registrado correctamente ahora puede iniciar sesión","Exito!");
+					regresarLogin();
+				}else{
+				 app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");
+				}
+				app.hidePreloader();
+			},
+			error: function (e) {
+				app.hidePreloader();
+				app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");
+			}
+		});
+		
+		//window.localStorage.setItem("sgSucursal", $$("input[name='my-radio']:checked").val());
+		//window.localStorage.setItem("sgURLSucursal", getSucursal($$("input[name='my-radio']:checked").val()));
+		regresarLogin();
 	}
 }
 

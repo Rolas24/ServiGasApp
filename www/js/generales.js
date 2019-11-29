@@ -47,7 +47,7 @@ function getSucursal(val){
 		urlSucursal="http://pedidoscgrandesdyns.org/";
 		break;
 		case '8':
-		urlSucursal="http://pedidosjuarez.dyndns.org/";
+		urlSucursal="http://mcomplejo.dyndns.org/Controlador/pedidosAppController.php";
 		break;
 		default:
 		urlSucursal="http://pedidoschihuahua.dyndns.org/";
