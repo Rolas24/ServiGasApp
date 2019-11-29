@@ -21,6 +21,9 @@
         },
         "cordova-plugin-request-location-accuracy": {
             "PACKAGE_NAME": "com.rolas.servigasapp"
+        },
+        "cordova-plugin-permission": {
+            "PACKAGE_NAME": "com.rolas.servigasapp"
         }
     },
     "dependent_plugins": {}

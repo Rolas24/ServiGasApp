@@ -11,7 +11,8 @@ var mainView = app.addView('.view-main', {
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
-  assh();
+  
+  probar();
   if(sUsuario.length>0){
     app.closeModal('.login-screen');
   }if(sURL.length===0){
