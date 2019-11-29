@@ -30,7 +30,8 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-request-location-accuracy": "2.3.0",
-    "cordova-plugin-permission": "0.1.0"
+    "cordova-plugin-permission": "0.1.0",
+    "cordova.plugins.diagnostic": "3.9.2"
 }
 // BOTTOM OF METADATA
 });

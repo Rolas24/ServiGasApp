@@ -9,25 +9,28 @@ var sURL="";
 var sIdCliente="";
 
 function setSession(){
-	sNombre = window.localStorage.getItem("sgNombre");
-	sDireccion = window.localStorage.getItem("sgDireccion");
-	sTelefono = window.localStorage.getItem("sgTelefono");
-	sCorreo = window.localStorage.getItem("sgCorreo");
-	sSucursal=window.localStorage.getItem("sgSucursal");
-	sURL = window.localStorage.getItem("sgURLSucursal");
-	sUsuario=window.localStorage.getItem("sgUsuario");
-	sPass = window.localStorage.getItem("sgPass");
-  sIdCliente=window.localStorage.getItem("sgIdCliente");
+ sIdCliente=window.localStorage.getItem("sgIdCliente");
+ if (typeof sIdCliente !== 'undefined' && sIdCliente !== null){
+   sNombre = window.localStorage.getItem("sgNombre");
+   sDireccion = window.localStorage.getItem("sgDireccion");
+   sTelefono = window.localStorage.getItem("sgTelefono");
+   sCorreo = window.localStorage.getItem("sgCorreo");
+   sSucursal=window.localStorage.getItem("sgSucursal");
+   sURL = window.localStorage.getItem("sgURLSucursal");
+   sUsuario=window.localStorage.getItem("sgUsuario");
+   sPass = window.localStorage.getItem("sgPass");
+   sIdCliente=window.localStorage.getItem("sgIdCliente");
+ }
 }
 
 function setLocalStorage(nombre,correo,telefono,usuario,pass,sucursal,idCliente){
-       window.localStorage.setItem("sgNombre",nombre);
-       window.localStorage.setItem("sgCorreo", correo);
-       window.localStorage.setItem("sgTelefono", telefono);
-       window.localStorage.setItem("sgUsuario",usuario);
-       window.localStorage.setItem("sgPass", pass);
-       window.localStorage.setItem("sgSucursal",sucursal);
-       window.localStorage.setItem("sgIdCliente",idCliente);
+ window.localStorage.setItem("sgNombre",nombre);
+ window.localStorage.setItem("sgCorreo", correo);
+ window.localStorage.setItem("sgTelefono", telefono);
+ window.localStorage.setItem("sgUsuario",usuario);
+ window.localStorage.setItem("sgPass", pass);
+ window.localStorage.setItem("sgSucursal",sucursal);
+ window.localStorage.setItem("sgIdCliente",idCliente);
 }
 
 function clearStorage(){

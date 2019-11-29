@@ -6,8 +6,8 @@ function GoogleMap(){
 
 	var showMap = function(){
 		var mapOptions = {
-			zoom: 4,
-			center: new google.maps.LatLng(-33, 151),
+			zoom: 5,
+			center: new google.maps.LatLng(28.222665,-104.0468086),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		}
 
