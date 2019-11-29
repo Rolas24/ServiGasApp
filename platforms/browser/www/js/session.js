@@ -115,19 +115,3 @@ function modalSucursal(){
     ]
   });  
 }
-
-function probar(){
-  var Permission = window.plugins.Permission
- 
-var permission = 'android.permission.RECORD_AUDIO'
- 
-Permission.has(permission, function(results) {
-    if (!results[permission]) {
-        Permission.request(permission, function(results) {
-            if (result[permission]) {
-                // permission is granted
-            }
-        }, alert)
-    }
-}, alert)
-}

@@ -30,5 +30,4 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
-    <plugin name="cordova-plugin-permission" source="npm"/>
 </widget>
