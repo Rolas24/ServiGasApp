@@ -14,7 +14,7 @@ function GoogleMap(){
 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		return map;
 	}
-	abrir();
+	obtenerUbicacionActual();
 }
 function obtenerUbicacionActual(){
 	var onSuccess = function(position) {
