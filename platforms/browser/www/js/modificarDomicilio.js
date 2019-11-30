@@ -16,7 +16,7 @@ function GoogleMap(){
 	}
 	abrir();
 }
-function abrir(){
+function obtenerUbicacionActual(){
 	var onSuccess = function(position) {
         alert('Latitude: '          + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n' +

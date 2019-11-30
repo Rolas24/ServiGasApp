@@ -20,6 +20,20 @@ module.exports = [
         "file": "plugins/cordova-plugin-permission/tests/index.spec.js",
         "id": "cordova-plugin-permission.tests",
         "pluginId": "cordova-plugin-permission"
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "pluginId": "cordova-plugin-splashscreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/src/browser/SplashScreenProxy.js",
+        "id": "cordova-plugin-splashscreen.SplashScreenProxy",
+        "pluginId": "cordova-plugin-splashscreen",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -31,7 +45,8 @@ module.exports.metadata =
     "cordova-plugin-geolocation": "2.1.0",
     "cordova-plugin-request-location-accuracy": "2.3.0",
     "cordova-plugin-permission": "0.1.0",
-    "cordova.plugins.diagnostic": "3.9.2"
+    "cordova.plugins.diagnostic": "3.9.2",
+    "cordova-plugin-splashscreen": "5.0.3"
 }
 // BOTTOM OF METADATA
 });

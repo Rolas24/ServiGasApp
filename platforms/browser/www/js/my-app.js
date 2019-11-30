@@ -12,11 +12,6 @@ var mainView = app.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
   setSession();
-  cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
-    app.alert("GPS location is " + (enabled ? "enabled" : "disabled"));
-  }, function(error){
-    app.alert("The following error occurred: "+error);
-  });  
   if(sUsuario.length>0){
     app.closeModal('.login-screen');
   }if(sURL.length===0){

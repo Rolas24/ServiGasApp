@@ -27,6 +27,9 @@
         },
         "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.rolas.servigasapp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.rolas.servigasapp"
         }
     },
     "dependent_plugins": {}

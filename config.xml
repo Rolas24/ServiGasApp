@@ -19,6 +19,18 @@
     <platform name="android">
         <preference name="android-minSdkVersion" value="14" />
         <allow-intent href="market:*" />
+
+        <!-- you can use any density that exists in the Android project -->
+        <splash src="img/splash/splash-port-hdpi.png" density="land-hdpi"/>
+        <splash src="img/splash/splash-port-ldpi.png" density="land-ldpi"/>
+        <splash src="img/splash/splash-port-mdpi.png" density="land-mdpi"/>
+        <splash src="img/splash/splash-port-xhdpi.png" density="land-xhdpi"/>
+
+        <splash src="img/splash/splash-port-hdpi.png" density="port-hdpi"/>
+        <splash src="img/splash/splash-port-ldpi.png" density="port-ldpi"/>
+        <splash src="img/splash/splash-port-mdpi.png" density="port-mdpi"/>
+        <splash src="img/splash/splash-port-xhdpi.png" density="port-xhdpi"/>
+
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
@@ -30,7 +42,5 @@
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="cordova-plugin-geolocation" source="npm" spec="~2.1.0" />
-    <plugin name="cordova.plugins.diagnostic">
-       <param name="ANDROID_SUPPORT_VERSION" value="26.+" />
-    </plugin>
+    <plugin name="cordova-plugin-splashscreen" source="npm" />
 </widget>
