@@ -1,7 +1,8 @@
+map=null;
 function GoogleMap(){
 	app.closePanel();
 	this.initialize = function(){
-		var map = showMap();
+		map = showMap();
 	}
 
 	var showMap = function(){
@@ -18,21 +19,20 @@ function GoogleMap(){
 }
 function obtenerUbicacionActual(){
 	var onSuccess = function(position) {
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' +
-              'Altitude: '          + position.coords.altitude          + '\n' +
-              'Accuracy: '          + position.coords.accuracy          + '\n' +
-              'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-              'Heading: '           + position.coords.heading           + '\n' +
-              'Speed: '             + position.coords.speed             + '\n' +
-              'Timestamp: '         + position.timestamp                + '\n');
-    };
+		app.alert('Latitude: '          + position.coords.latitude          + '\n' +
+			'Longitude: '         + position.coords.longitude         + '\n');
+		var latitudeAndLongitudeOne = new google.maps.LatLng(position.coords.latitude ,position.coords.longitude);
+		var markerOne = new google.maps.Marker({
+			position: latitudeAndLongitudeOne,
+			map: map
+		});
+	};
 
     // onError Callback receives a PositionError object
     //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
+    	app.alert('code: '    + error.code    + '\n' +
+    		'message: ' + error.message + '\n');
     }
 
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
