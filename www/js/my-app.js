@@ -1,6 +1,8 @@
 
 // Initialize app
-var app = new Framework7();
+var app = new Framework7({
+  smartSelectSearchbar:true
+});
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
 
@@ -24,8 +26,7 @@ $$(document).on('pageInit', function (e) {
     var page = e.detail.page;
 
     if (page.name === 'about') {
-        // Following code will be executed for page with data-page attribute equal to "about"
-       // app.alert('Here comes About page');
+
      }else if(page.name ==='splash'){
 
      }else if(page.name ==='main'){
@@ -38,7 +39,14 @@ $$(document).on('pageInit', function (e) {
        initCambiarPass();
      }else if(page.name === 'modificarDatos'){
        initModificarDatos();
-     }else if(page.name === 'modificarDomicilio'){    
+     }else if(page.name === 'modificarDomicilio'){ 
+       initModificarDomicilio();   
+
+    }else if(page.name ==='buscarCalle'){
+      initBuscarCalle();
+    }else if(page.name==='buscarColonia'){
+      initBuscarColonia();
+    }else if(page.name==='mapa'){
       var map = new GoogleMap();
       map.initialize();
     }

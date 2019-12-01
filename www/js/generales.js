@@ -22,6 +22,14 @@ function validInputMaxMin(obj,tam,nom){
 		return true;
 	}
 }
+function valDifCero(val,nom){
+	if(val===0){
+		app.alert("El dato "+nom+" no puede estar vacio","Sin Selección");
+	}else{
+		return true;
+	}
+
+}
 function getSucursal(val){
 	var urlSucursal="";
 	switch (val) {

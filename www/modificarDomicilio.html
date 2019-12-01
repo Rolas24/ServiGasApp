@@ -1,29 +1,110 @@
 <div class="navbar">
-	<div class="navbar-inner">
-		<div class="left">
-			<a href="#" class="back link">
-				<i class="icon icon-back"></i>
-				<span>Regresar</span>
-			</a>
-		</div>
-		<div class="center sliding color-white">Mi Domicilio</div>
-		<div class="right">
-			<a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
-		</div>
-	</div>
+  <div class="navbar-inner">
+    <div class="left">
+      <a href="#" class="back link">
+        <i class="icon icon-back"></i>
+        <span>Regresar</span>
+      </a>
+    </div>
+    <div class="center sliding color-white">Modificar Domicilio</div>
+    <div class="right">
+      <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+    </div>
+  </div>
 </div>
 <div class="pages">
-	<div data-page="modificarDomicilio" class="page theme-dark">
-		<div class="page-content">
-			<div id="map_canvas">
-			</div>
-		</div>
-		<div class="toolbar">
-			<div class="toolbar-inner">
+  <div data-page="modificarDomicilio" class="page theme-dark">
+    <div class="page-content">
+     <div class="content-block">
+      <div class="list-block">
+        <ul>
+          <li>
+            <div id="btnBuscarCalle" class="item-content">
+             <div class="item-media"><i class="icon f7-icons">location_fill</i></div>
+             <div class="item-inner">
+              <div class="item-title label">Calle</div>
+              <div class="item-input">
+                <input id="txtMDOCalle" type="text" placeholder="Clic para buscar Calle" disabled>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div id="btnBuscarColonia" class="item-content">
+           <div class="item-media"><i class="icon f7-icons">location_circle_fill</i></div>
+           <div class="item-inner">
+            <div class="item-title label">Colonia</div>
+            <div class="item-input">
+              <input id="txtMDOColonia" type="text" placeholder="Clic para buscar Colonia" disabled>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon f7-icons">number_square_fill</i></div>
+          <div class="item-inner">
+            <div class="item-title label">Num Int.</div>
+            <div class="item-input">
+              <input id="txtMDONumInt" type="number" placeholder="Número Interior">
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon f7-icons">number_square_fill</i></div>
+          <div class="item-inner">
+            <div class="item-title label">Num Ext.</div>
+            <div class="item-input">
+              <input id="txtMDONumExt" type="number" placeholder="Número Exterior">
+            </div>
+          </div>
+        </div>
+      </li>   
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon f7-icons">house</i></div>
+          <div class="item-inner">
+            <div class="item-title label">Entre calles</div>
+            <div class="item-input">
+              <input id="txtMDOEntreCalles" type="text" placeholder="(Opcional)">
+            </div>
+          </div>
+        </div>
+      </li> 
+      <li>
+        <div class="item-content">
+          <div class="item-media"><i class="icon f7-icons">house_fill</i></div>
+          <div class="item-inner">
+            <div class="item-title label">Tipo</div>
+            <div class="item-input">
+              <select id="sltMDOTipoDomicilio">
+                <option val="1">Casa/Habitación</option>
+                <option val="2">Empresa</option>
+                <option val="3">Industrial</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div id="btnBuscarUbicacion" class="item-content">
+          <div class="item-media"><i class="icon f7-icons">location_fill</i></div>
+          <div class="item-inner">
+            <div class="item-title label">Ubicación</div>
+            <div class="item-input">
+              <input id="txtMDOUbicacion" type="text" placeholder="(Obligatoria)" disabled>
+            </div>
+          </div>
+        </div>
+      </li> 
+    </ul>
 
-				<a href="#" class="link">jajaja</a>
-				<a href="#" class="link">jajaja</a>
-			</div>
-		</div>
-	</div>
+  </div>
+  <p><small>NOTA: *Su ubicación es necesaria para poder identificar mas rapido su domicilio"</small></p>
+  <a id="btnMDGuardarDomicilio" href="#" class="button button-big button-round active">Guardar Domicilio</a>
+</div>
+</div>
+</div>
 </div>
