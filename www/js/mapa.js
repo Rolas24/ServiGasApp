@@ -20,6 +20,7 @@ function GoogleMap(){
 			$$("#btnLatLng").text(e.latLng.lat());
 			lat=e.latLng.lat();
 		    lng=e.latLng.lng();
+		    app.alert("el gps bien");
 			placeMarkerAndPanTo(e.latLng, map);
 		});
 		obtenerUbicacionActual();

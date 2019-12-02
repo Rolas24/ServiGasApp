@@ -11,6 +11,7 @@
     <content src="index.html" />
     <access origin="*" />
     <access origin="whatsapp:*" launch-external="yes" />
+    <access origin="wa.me:*" launch-external="yes" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
