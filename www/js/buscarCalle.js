@@ -4,6 +4,7 @@ function initBuscarCalle(){
 			buscarCalle($$(this).val());
 		}
 	});
+	buscarCalle("ab");
 }
 function buscarCalle(buscar){
 	var html="";

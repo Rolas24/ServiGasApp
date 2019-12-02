@@ -4,6 +4,7 @@ function initBuscarColonia(){
 			buscarColonia($$(this).val());
 		}
 	});
+	buscarColonia("a");
 }
 function buscarColonia(buscar){
 	var html="";

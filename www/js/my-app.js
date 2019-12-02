@@ -22,13 +22,13 @@ $$(document).on('deviceready', function() {
 });
 
 $$(document).on('pageInit', function (e) {
-    // Get page data from event data
+    
     var page = e.detail.page;
 
-    if (page.name === 'about') {
-
-     }else if(page.name ==='splash'){
-
+    if (page.name === 'acercade') {
+      app.closePanel();
+     }else if(page.name ==='reportarProblema'){
+       initReportarProblema();
      }else if(page.name ==='main'){
        initMain();
      }else if(page.name ==='registro'){
@@ -41,7 +41,6 @@ $$(document).on('pageInit', function (e) {
        initModificarDatos();
      }else if(page.name === 'modificarDomicilio'){ 
        initModificarDomicilio();   
-
     }else if(page.name ==='buscarCalle'){
       initBuscarCalle();
     }else if(page.name==='buscarColonia'){
@@ -84,15 +83,13 @@ $$("#btnCerrarPanel").click(function(e){
   e.preventDefault();
   app.closePanel();
 });
-$$("#btnModificarDomicilio").click(function(e){
- mainView.router.loadPage('modificarDomicilio.html');
-});
 $$("#btnCerrarSesion").click(function(e){
   e.preventDefault();
   cerrarSesion();
   app.closePanel();
   app.loginScreen();
 });
+
 
 //Eventos Main TAB 1
 $$("#btnPedidoEstacionario").click(function(e){

@@ -1,4 +1,5 @@
-map=null;
+var map=null;
+var marker=null;
 function GoogleMap(){
 	app.closePanel();
 	this.initialize = function(){
@@ -13,26 +14,40 @@ function GoogleMap(){
 		}
 
 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+		map.addListener('click', function(e) {
+			placeMarkerAndPanTo(e.latLng, map);
+		});
+		obtenerUbicacionActual();
 		return map;
 	}
-	obtenerUbicacionActual();
+	
 }
+
 function obtenerUbicacionActual(){
 	var onSuccess = function(position) {
-		app.alert('Latitude: '          + position.coords.latitude          + '\n' +
-			'Longitude: '         + position.coords.longitude         + '\n');
-		var latitudeAndLongitudeOne = new google.maps.LatLng(position.coords.latitude ,position.coords.longitude);
-		var markerOne = new google.maps.Marker({
+		lat=position.coords.latitude ;
+		long=position.coords.longitude;
+		var latitudeAndLongitudeOne = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+		marker = new google.maps.Marker({
 			position: latitudeAndLongitudeOne,
+			icon:'./img/marker.png',
+			animation: google.maps.Animation.DROP,
 			map: map
 		});
 	};
 
-    // onError Callback receives a PositionError object
-    //
     function onError(error) {
     	app.alert("Es necesario encender su GPS para obtener su ubicación actual","Permitir ubicación");
     }
 
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
+}
+function placeMarkerAndPanTo(latLng, map) {
+	marker.setMap(null);
+    marker = new google.maps.Marker({
+    position: latLng,
+    animation: google.maps.Animation.DROP,
+    map: map
+  });
+  map.panTo(latLng);
 }

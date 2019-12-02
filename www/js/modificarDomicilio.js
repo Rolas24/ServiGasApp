@@ -2,6 +2,8 @@ var calles=[];
 var colonias=[];
 var selCalle=0;
 var selColonia=0;
+var lat=0;
+var long=0;
 function initModificarDomicilio(){
 	app.closePanel();
 	$$("#btnBuscarCalle").click(function(e){
@@ -16,23 +18,27 @@ function initModificarDomicilio(){
 		e.preventDefault();
 		mainView.router.loadPage('mapa.html');
 	});
+	$$("#btnMDGuardarDomicilio").click(function(e){
+		e.preventDefault();
+		guardarDomicilio();
+	});
 	getCalles();
 	getColonias();
 }
 
 function guardarDomicilio(){
 	if(validarDomicilio()){
-		var data = {accion: "1",razonSocial:$$("#txtRegNombre").val(),telefonoCelular:$$("#txtRegTelefono").val(),
-		correo:$$("#txtRegCorreo").val(),usuario:$$("#txtRegUsuario").val(),contrasena:$$("#txtRegContrasenia").val()};
+		var data = {accion: "1",idCliente:sIdCliente,idCalle:selCalle,numeroExterior:$$("#txtMDONumExt").val(),
+		numeroInterior:$$("#txtMDONumInt").val(),idColonia:selColonia,entre_calles:$$("#txtMDOEntreCalles").val(),
+		idTipoDomicilio:$$("#sltMDOTipoDomicilio").val(),idCiudad:1};
 		
 		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
 			beforeSend: function () {
-				app.showPreloader('Guardando...')
+				app.showPreloader('Guardando Domicilio...')
 			},
 			success: function (data) {
 				if(data.length>0){					
-					app.alert("Registrado correctamente ahora puede iniciar sesión","Exito!");
-					regresarLogin();
+					app.alert("Su domicilio fue actualizado correctamente","Exito!");
 				}else{
 					app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");
 				}
@@ -92,15 +98,6 @@ function validarDomicilio(){
 	var bnd=true;
 	bnd=bnd && validDifCero(selCalle,"Calle");
 	bnd=bnd && validDifCero(selColonia,"Colonia");
-	bnd=bnd && validInputVacio($$("#txtRegNombre"),"Nombre");
-	bnd=bnd && validInputVacio($$("#txtRegCorreo"),"Correo");
-	bnd=bnd && validInputVacio($$("#txtRegTelefono"),"Telefono");
-	bnd=bnd && validInputVacio($$("#txtRegUsuario"),"Usuario");
-	bnd=bnd && validInputVacio($$("#txtRegContrasenia"),"Contraseña");
-	bnd=bnd && validInputVacio($$("#txtRegRepetir"),"Repetir Contraseña");
-	bnd=bnd && validInputMaxMin($$("#txtRegUsuario"),6,"Usuario");
-	bnd=bnd && validInputMaxMin($$("#txtRegContrasenia"),6,"Contraseña");
-	bnd=bnd && validPassIgual($$("#txtRegContrasenia"),$$("#txtRegRepetir"));
-
+    bnd=bnd && validDifCero(lat,"Ubicación");
 	return bnd;
 }
