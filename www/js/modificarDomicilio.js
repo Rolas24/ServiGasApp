@@ -3,7 +3,7 @@ var colonias=[];
 var selCalle=0;
 var selColonia=0;
 var lat=0;
-var long=0;
+var lng=0;
 function initModificarDomicilio(){
 	app.closePanel();
 	$$("#btnBuscarCalle").click(function(e){
