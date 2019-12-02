@@ -17,8 +17,7 @@ function GoogleMap(){
 
 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		map.addListener('click', function(e) {
-			app.alert("prueba!");
-			$$("#btnLatLng").text(e.latLng.substring(0,25));
+			$$("#btnLatLng").text(e.latLng.lat());
 			lat=e.latLng.lat();
 		    lng=e.latLng.lng();
 			placeMarkerAndPanTo(e.latLng, map);
