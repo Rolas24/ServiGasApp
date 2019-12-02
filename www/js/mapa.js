@@ -17,6 +17,7 @@ function GoogleMap(){
 
 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		map.addListener('click', function(e) {
+			app.alert("prueba!");
 			$$("#btnLatLng").text(e.latLng.substring(0,25));
 			lat=e.latLng.lat();
 		    lng=e.latLng.lng();
@@ -58,6 +59,7 @@ function obtenerUbicacionActual(){
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 function placeMarkerAndPanTo(latLng, map) {
+	app.alert("aqui mero");
 	marker.setMap(null);
 	marker = new google.maps.Marker({
 		position: latLng,

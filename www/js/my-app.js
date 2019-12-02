@@ -274,7 +274,6 @@ function addClickPedido(obj){
   obj.click(function(e){
     e.preventDefault();
     selPedido=$$(this).attr('data-idpedido');
-    app.alert(selPedido);
     $$.get('detallePedido.html',function(data){
       app.popup(data);
       for (var i = 0; i < mispedidos.length; i++) {
