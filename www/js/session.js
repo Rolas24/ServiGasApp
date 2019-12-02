@@ -7,8 +7,11 @@ var sPass="";
 var sSucursal="";
 var sURL="";
 var sIdCliente="";
-var sIdCalle="";
-var sIdColonia="";
+var sCalle="";
+var sColonia="";
+var sNumInt="";
+var sNumExt="";
+var entreCalles="";
 
 function setSession(){
  sIdCliente=window.localStorage.getItem("sgIdCliente");
@@ -102,7 +105,7 @@ function modalSucursal(){
       }
     },
     {
-      text: 'cGrandes',
+      text: 'Casas Grandes',
       onClick: function() {
         urlSucursal="http://pedidoscgrandesdyns.org/Controlador/pedidosAppController.php";
         window.localStorage.setItem("sgURLSucursal", urlSucursal);

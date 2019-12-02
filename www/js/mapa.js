@@ -2,7 +2,6 @@ var map=null;
 var marker=null;
 function GoogleMap(){
 	app.closePanel();
-	getAddress();
 	this.initialize = function(){
 		map = showMap();
 	}
@@ -67,7 +66,7 @@ function placeMarkerAndPanTo(latLng, map) {
 	map.panTo(latLng);
 }
 
-function getAddress(lat,lng){
+/*function getAddress(lat,lng){
 	$$.ajax({url: "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+lng+"&location_type=ROOFTOP&result_type=street_address&key=AIzaSyCXmTKa8vi3rJManvt6EpTJ40ul8BaGrHw&amp", dataType: "json", type: 'POST', 
 		beforeSend: function () {
 
@@ -86,3 +85,4 @@ function getAddress(lat,lng){
 		}
 	});
 }
+*/

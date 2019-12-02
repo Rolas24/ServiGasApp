@@ -165,6 +165,31 @@ function pedido(pedido){
      $$("#contLitros").hide();
      $$("#sltTipoPedido").val("Cilindro");
    }
+   $$("#btnGuardarPedido").click(function(e){
+     e.preventDefault();
+     if(validarPedido()){
+      $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+        beforeSend: function () {
+
+        },
+        success: function (data) {
+          if(data.length>0){          
+            app.alert(data);
+          }else{
+            app.alert("Error en get address","Error!");
+          }
+          app.hidePreloader();
+        },
+        error: function (e) {
+          app.hidePreloader();
+          app.alert("Error al guardar su pedido.","Error!");
+        }
+      });
+    }else{
+      app.alert("Recuerde que es necesario registrar Su domicilio y Razón Social para poder"+
+        " solicitar un pedido","Aviso!");
+    }
+  });
  });
 
 }
@@ -182,5 +207,12 @@ function validarInicioSesion(){
   bnd=bnd && validInputVacio($$("#txtLoginPass"),"Contraseña");
   bnd=bnd && validInputMaxMin($$("#txtLoginUsuario"),6,"Usuario");
   bnd=bnd && validInputMaxMin($$("#txtLoginPass"),6,"Contraseña");
+  return bnd;
+}
+
+function validarPedido(){
+  var bnd=true;
+  bnd=bnd && validInputVacio($$("#txtPedNombre"),"Nombre");
+  bnd=bnd && validInputVacio($$("#txtPedDireccion"),"Dirección");
   return bnd;
 }

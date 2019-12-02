@@ -28,7 +28,7 @@ function initModificarDomicilio(){
 
 function guardarDomicilio(){
 	if(validarDomicilio()){
-		var data = {accion: "1",idCliente:sIdCliente,idCalle:selCalle,numeroExterior:$$("#txtMDONumExt").val(),
+		var data = {accion: "3",idCliente:sIdCliente,idCalle:selCalle,numeroExterior:$$("#txtMDONumExt").val(),
 		numeroInterior:$$("#txtMDONumInt").val(),idColonia:selColonia,entre_calles:$$("#txtMDOEntreCalles").val(),
 		idTipoDomicilio:$$("#sltMDOTipoDomicilio").val(),idCiudad:1,latitud:lat,longitud:lng};
 		
