@@ -17,8 +17,9 @@ function GoogleMap(){
 
 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 		map.addListener('click', function(e) {
-			$$("#btnLatLng").text(e.latLng);
-			getAddress(e.latlng.lat(),e.latlng.lng());
+			$$("#btnLatLng").text(e.latLng.substring(0,25));
+			lat=e.latLng.lat();
+		    lng=e.latLng.lng();
 			placeMarkerAndPanTo(e.latLng, map);
 		});
 		obtenerUbicacionActual();
@@ -34,7 +35,7 @@ function GoogleMap(){
 
 function obtenerUbicacionActual(){
 	var onSuccess = function(position) {
-		lat=position.coords.latitude ;
+		lat=position.coords.latitude;
 		lng=position.coords.longitude;
 		$$("#btnLatLng").text(lat+" "+lng);
 		var latitudeAndLongitudeOne = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);

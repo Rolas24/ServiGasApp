@@ -5,33 +5,55 @@
 			<ul>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">person</i></div>
+						<div class="item-media"><i class="icon f7-icons">chart_bar_square_fill</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Nombre</div>
+							<div class="item-title label">Folio Pedido</div>
 							<div class="item-input">
-								<input id="txtPedNombre" type="text" disabled>
+								<input id="txtDPFolio" type="text" disabled>
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">location</i></div>
+						<div class="item-media"><i class="icon f7-icons">calendar_today</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Direccion</div>
+							<div class="item-title label">Fecha</div>
 							<div class="item-input">
-								<input id="txtPedDireccion" type="text" disabled>
+								<input id="txtDPFecha" type="text" disabled>
 							</div>
 						</div>
 					</div>
 				</li>
 				<li>
 					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">device_phone_portrait</i></div>
+						<div class="item-media"><i class="icon f7-icons">bubble_left_bubble_right</i></div>
 						<div class="item-inner">
-							<div class="item-title label">Telefono</div>
+							<div class="item-title label">Tipo</div>
 							<div class="item-input">
-								<input id="txtPedTelefono" type="text" disabled>
+								<input id="txtDPTipo" type="text" disabled>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon f7-icons">car_fill</i></div>
+						<div class="item-inner">
+							<div class="item-title label">Unidad Asignada</div>
+							<div class="item-input">
+								<input id="txtDPUnidad" type="text" disabled>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="item-content">
+						<div class="item-media"><i class="icon f7-icons">cube</i></div>
+						<div class="item-inner">
+							<div class="item-title label">Cantidad</div>
+							<div class="item-input">
+								<input id="txtDPCantidad" type="text"  disabled>
 							</div>
 						</div>
 					</div>
@@ -40,55 +62,14 @@
 					<div class="item-content">
 						<div class="item-media"><i class="icon f7-icons">envelope</i></div>
 						<div class="item-inner">
-							<div class="item-title label">E-mail</div>
+							<div class="item-title label">Estatus</div>
 							<div class="item-input">
-								<input id="txtPedCorreo" type="email"  disabled>
+								<input id="txtDPEstatus" type="text"  disabled>
 							</div>
 						</div>
 					</div>
 				</li>
-				<p><small>(*Revise que sus datos esten actualizados)</small></p>
-				<div class="content-block-title">Su Pedido</div>
-				<li>
-					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">chat_bubble_text_fill</i></div>
-						<div class="item-inner">
-							<div class="item-title label">Tipo</div>
-							<div class="item-input">
-								<select id="sltTipoPedido" disabled>
-									<option val="1">Estacionario</option>
-									<option val="2">Cilindro</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</li>
-				<li id="contLitros">
-					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">suit_diamond_fill</i></div>
-						<div class="item-inner">
-							<div class="item-title label">Litros</div>
-							<div class="item-input">
-								<input id="txtLitros" type="number" placeholder="(Opcional)" >
-							</div>
-						</div>
-					</div>
-				</li>
-				<li id="contTipoCilindro">
-					<div class="item-content">
-						<div class="item-media"><i class="icon f7-icons">chart_bar_square_fill</i></div>
-						<div class="item-inner">
-							<div class="item-title label">Tamaño</div>
-							<div class="item-input">
-								<select id="sltTipoCilindro">
-									<option val="30">30 kg.</option>
-									<option val="45">45 kg.</option>
-									<option val="15">15 kg.</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</li>
+				
 				<!-- Textarea -->
 				<li class="align-top">
 					<div class="item-content">
@@ -96,14 +77,14 @@
 						<div class="item-inner">
 							<div class="item-title label">Observaciones</div>
 							<div class="item-input">
-								<input id="txtObservaciones" type="text"placeholder="(Opcional)" >
+								<input id="txtDPObservaciones" type="text" disabled >
 							</div>
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
-		<a id="btnGuardarPedido" href="#" class="button button-big button-round active">Pedir Ahora!</a> 
-		<p><a href="#" class="close-popup">Cancelar Solicitud</a></p>
+		<a id="btnGuardarPedido" href="#" class="button button-big button-round active">Cancelar Pedido</a> 
+		<p><a href="#" class="close-popup">Cerrar ventana</a></p>
 	</div>
 </div>

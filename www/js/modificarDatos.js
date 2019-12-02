@@ -22,7 +22,7 @@ function actualizarDatosCliente(){
 
 		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
 			beforeSend: function () {
-				app.showPreloader('Modificando datos...')
+				app.showPreloader('Modificando datos...');
 			},
 			success: function (data) {
 				if(data==="1"){

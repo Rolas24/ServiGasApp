@@ -22,6 +22,14 @@ function initModificarDomicilio(){
 		e.preventDefault();
 		guardarDomicilio();
 	});
+
+	$$("#txtMDONumExt").val(sNumExt);
+	$$("#txtMDONumInt").val(sNumInt);
+	$$("#txtMDOCalle").val(sCalle);
+	$$("#txtMDOColonia").val(sColonia);
+	$$("#txtMDOEntreCalles").val(sEntreCalles);
+	selCalle=sIdCalle;
+	selColonia=sIdColonia;
 	getCalles();
 	getColonias();
 }
@@ -98,6 +106,6 @@ function validarDomicilio(){
 	var bnd=true;
 	bnd=bnd && validDifCero(selCalle,"Calle");
 	bnd=bnd && validDifCero(selColonia,"Colonia");
-    bnd=bnd && validDifCero(lat,"Ubicación");
+    //bnd=bnd && validDifCero(lat,"Ubicación");
 	return bnd;
 }
