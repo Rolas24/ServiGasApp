@@ -16,40 +16,43 @@ $$(document).on('deviceready', function() {
   setSession();
   if(sUsuario.length>0){
     app.closeModal('.login-screen');
+    $$("#txtPnlUsuario").text(sUsuario);
+    $$("#txtPnlNombre").text(sNombre); 
+
   }if(sURL.length===0){
     modalSucursal();
   }
 });
 
 $$(document).on('pageInit', function (e) {
-    
-    var page = e.detail.page;
 
-    if (page.name === 'acercade') {
-      app.closePanel();
-     }else if(page.name ==='reportarProblema'){
-       initReportarProblema();
-     }else if(page.name ==='main'){
-       initMain();
-     }else if(page.name ==='registro'){
-       initRegistro();
-     }else if(page.name === 'recuperar'){
-       initRecuperar();
-     }else if(page.name==='cambiarpass'){
-       initCambiarPass();
-     }else if(page.name === 'modificarDatos'){
-       initModificarDatos();
-     }else if(page.name === 'modificarDomicilio'){ 
-       initModificarDomicilio();   
-    }else if(page.name ==='buscarCalle'){
-      initBuscarCalle();
-    }else if(page.name==='buscarColonia'){
-      initBuscarColonia();
-    }else if(page.name==='mapa'){
-      var map = new GoogleMap();
-      map.initialize();
-    }
-  });
+  var page = e.detail.page;
+
+  if (page.name === 'acercade') {
+    app.closePanel();
+  }else if(page.name ==='reportarProblema'){
+   initReportarProblema();
+ }else if(page.name ==='main'){
+   initMain();
+ }else if(page.name ==='registro'){
+   initRegistro();
+ }else if(page.name === 'recuperar'){
+   initRecuperar();
+ }else if(page.name==='cambiarpass'){
+   initCambiarPass();
+ }else if(page.name === 'modificarDatos'){
+   initModificarDatos();
+ }else if(page.name === 'modificarDomicilio'){ 
+   initModificarDomicilio();   
+ }else if(page.name ==='buscarCalle'){
+  initBuscarCalle();
+}else if(page.name==='buscarColonia'){
+  initBuscarColonia();
+}else if(page.name==='mapa'){
+  var map = new GoogleMap();
+  map.initialize();
+}
+});
 function onBackKeyDown() {
  app.alert("okidoki");
 }

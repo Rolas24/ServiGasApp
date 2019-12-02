@@ -7,6 +7,8 @@ var sPass="";
 var sSucursal="";
 var sURL="";
 var sIdCliente="";
+var sIdCalle="";
+var sIdColonia="";
 
 function setSession(){
  sIdCliente=window.localStorage.getItem("sgIdCliente");

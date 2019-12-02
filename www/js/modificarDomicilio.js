@@ -30,11 +30,11 @@ function guardarDomicilio(){
 	if(validarDomicilio()){
 		var data = {accion: "1",idCliente:sIdCliente,idCalle:selCalle,numeroExterior:$$("#txtMDONumExt").val(),
 		numeroInterior:$$("#txtMDONumInt").val(),idColonia:selColonia,entre_calles:$$("#txtMDOEntreCalles").val(),
-		idTipoDomicilio:$$("#sltMDOTipoDomicilio").val(),idCiudad:1};
+		idTipoDomicilio:$$("#sltMDOTipoDomicilio").val(),idCiudad:1,latitud:lat,longitud:lng};
 		
 		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
 			beforeSend: function () {
-				app.showPreloader('Guardando Domicilio...')
+				app.showPreloader('Guardando Domicilio...');
 			},
 			success: function (data) {
 				if(data.length>0){					
