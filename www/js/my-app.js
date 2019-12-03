@@ -204,10 +204,10 @@ function pedido(pedido){
 
    $$("#btnGuardarPedido").click(function(e){
      e.preventDefault();
-     var datas = {accion: "10",idCliente:sIdCliente,idTipoPedido:tipo,idSucursal:"1",
+     var data = {accion: "10",idCliente:sIdCliente,idTipoPedido:tipo,idSucursal:"1",
      idDomicilio:sIdDomicilio,cantidad:obj.val(),observaciones:$$("#txtPedObservaciones").val()};
      if(validarPedido()){
-       $$.ajax({url: sURL, dataType: "json", type: 'POST', datas,
+       $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
          beforeSend: function () {
            app.showPreloader('Guardando Pedido...');
          },
@@ -250,7 +250,7 @@ function getPedidos(){
         var icontemp="";
         var estatustemp="";
         if(data[i].estatus==="1"){
-          icontemp='estatus_enproceso.png';
+          icontemp='estatus_registrado.png';
           estatustemp='registrado';
         }else if(data[i].estatus==="2"){
           icontemp='estatus_encamino.png';
