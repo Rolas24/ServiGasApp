@@ -27,6 +27,8 @@ function actualizarDatosCliente(){
 			success: function (data) {
 				if(data==="1"){
 					app.alert("Información actualizada.","Exito!");
+                    updateSesionDatos(nombre,correo,telefono,usuario);
+					$("#txtPnlUsuario").text(sUsuario);
 				}else if(data==="0"){
                   app.alert("Ocurrio un error al actualizar sus datos.","Error!");
 				}

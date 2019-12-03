@@ -9,7 +9,6 @@ function initRecuperar(){
 	});
 	$$("#btnRecuperarPass").click(function(e){
 		e.preventDefault();
-		app.alert("jaja");
 		var data = {accion: "15",correo:$$("#txtRCCorreo").val()};		
 		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
 			beforeSend: function () {

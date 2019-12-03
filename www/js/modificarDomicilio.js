@@ -6,11 +6,11 @@ var lat=0;
 var lng=0;
 function initModificarDomicilio(){
 	app.closePanel();
-	$$("#btnBuscarCalle").click(function(e){
+	$$("#btnMDBuscarCalle").click(function(e){
 		e.preventDefault();
 		mainView.router.loadPage('buscarCalle.html');
 	});
-	$$("#btnBuscarColonia").click(function(e){
+	$$("#btnMDBuscarColonia").click(function(e){
 		e.preventDefault();
 		mainView.router.loadPage('buscarColonia.html');
 	});
@@ -47,6 +47,8 @@ function guardarDomicilio(){
 			success: function (data) {
 				if(data.length>0){					
 					app.alert("Su domicilio fue actualizado correctamente","Exito!");
+					updateSesionDomicilio(selCalle,$$("#txtMDOCalle").val(),selColonia,$$("#txtMDOColonia").val(),
+						$$("#txtMDONumExt").val(),$$("#txtMDONumInt").val(),$$("#txtMDOEntreCalles").val());
 					mainView.router.back();	
 				}else{
 					app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");

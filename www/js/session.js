@@ -38,7 +38,7 @@ function setSession(){
 }
 
 function setLocalStorage(nombre,telefono,correo,sucursal,usuario,pass,
-                        idCliente,idDomicilio,idCalle,idColonia,calle,colonia,numint,numext,entrecalles){
+  idCliente,idDomicilio,idCalle,idColonia,calle,colonia,numint,numext,entrecalles){
  window.localStorage.setItem("sgNombre",nombre);
  window.localStorage.setItem("sgTelefono", telefono);
  window.localStorage.setItem("sgCorreo",correo);
@@ -54,6 +54,34 @@ function setLocalStorage(nombre,telefono,correo,sucursal,usuario,pass,
  window.localStorage.setItem("sgNumInt",numint);
  window.localStorage.setItem("sgNumExt",numext);
  window.localStorage.setItem("sgEntreCalles",entrecalles);
+}
+
+function updateSesionDomicilio(idCalle,calle,idColonia,colonia,numext,numint,entrecalles){
+  sIdCalle=idCalle;
+  sCalle=calle;
+  sIdColonia=idColonia;
+  sColonia=colonia;
+  sNumExt=numext;
+  sNumInt=numint;
+  sEntreCalles=entrecalles;
+  window.localStorage.setItem("sgIdCalle", idCalle);
+  window.localStorage.setItem("sgIdColonia",idColonia);
+  window.localStorage.setItem("sgCalle", calle);
+  window.localStorage.setItem("sgColonia",colonia);
+  window.localStorage.setItem("sgNumInt",numint);
+  window.localStorage.setItem("sgNumExt",numext);
+  window.localStorage.setItem("sgEntreCalles",entrecalles);
+}
+
+function updateSesionDatos(nombre,correo,telefono,usuario){
+  sNombre=nombre;
+  sTelefono=telefono;
+  sCorreo=correo;
+  sUsuario=usuario;
+  window.localStorage.setItem("sgNombre",nombre);
+  window.localStorage.setItem("sgTelefono", telefono);
+  window.localStorage.setItem("sgCorreo",correo);
+  window.localStorage.setItem("sgUsuario",usuario);
 }
 
 function clearStorage(){

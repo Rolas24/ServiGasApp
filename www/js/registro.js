@@ -20,11 +20,12 @@ function guardarCliente(){
 				app.showPreloader('Guardando...')
 			},
 			success: function (data) {
-				if(data.length>0){					
+				alert(data.existe);
+				if(data.existe!=="1"){					
 					app.alert("Registrado correctamente ahora puede iniciar sesión","Exito!");
 					regresarLogin();
 				}else{
-				 app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");
+				 app.alert("El nombre de usuario ya existe elija otro nombre.","Ya existe");
 				}
 				app.hidePreloader();
 			},

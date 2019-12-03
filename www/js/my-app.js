@@ -152,12 +152,14 @@ function iniciarSesion(){
      },
      success: function (data) {
       if(data.length>0){
-       setLocalStorage(data[0].razonsocial,data[0].correo,data[0].telefono_celular,
-         $$("#txtLoginUsuario").val(),$$("#txtLoginPass").val(),data[0].idSucursal,
-         data[0].idCliente,data[0].idDomicilio,data[0].idCalle,data[0].idColonia,data[0].nombre_calle,data[0].nombre_colonia,data[0].numero_interior,data[0].numero_exterior,data[0].entrecalles);
+       setLocalStorage(data[0].razonsocial,data[0].telefono_celular,data[0].correo,
+         data[0].idSucursal,$$("#txtLoginUsuario").val(),$$("#txtLoginPass").val(),
+         data[0].idCliente,data[0].idDomicilio,data[0].idCalle,data[0].idColonia,
+         data[0].nombre_calle,data[0].nombre_colonia,data[0].numero_interior,data[0].numero_exterior,
+         data[0].entrecalles);
        setSession();
-       $$("#txtPnlUsuario").text($$("#txtLoginUsuario").val());
-       $$("#txtPnlNombre").text(data[0].razonSocial);  
+       $$("#txtPnlUsuario").text(sUsuario);
+       $$("#txtPnlNombre").text(sNombre);  
        $$("#txtLoginUsuario").val("");
        $$("#txtLoginPass").val("");
        app.closeModal('.login-screen');
@@ -326,17 +328,24 @@ function addClickPedido(obj){
     selPedido=$$(this).attr('data-idpedido');
     $$.get('detallePedido.html',function(data){
       app.popup(data);
+      $$("#btnCancelarPedido").click(function(e){
+        e.preventDefault();
+        cancelarPedido();
+      });
       for (var i = 0; i < mispedidos.length; i++) {
         if(mispedidos[i].idPedido===selPedido){
           var estatustemp="";
-          if(data[i].estatus=="1"){
+          app.alert(mispedidos[i].estatus)
+          if(mispedidos[i].estatus==="1"){
             estatustemp='Registrado';
-          }else if(data[i].estatus=="2"){
-            estatustemp='En Curso';
-          }else if(data[i].estatus=="3"){
+          }else if(mispedidos[i].estatus==="2"){
+            estatustemp='En Camino';
+          }else if(mispedidos[i].estatus==="3"){
             estatustemp='Surtido';
-          }else if(data[i].estatus=="4"){
+            $$("#btnCancelarPedido").attr('disabled','disabled');
+          }else if(mispedidos[i].estatus==="4"){
             estatustemp='Cancelado';
+            $$("#btnCancelarPedido").attr('disabled','disabled');
           }
           $$("#txtDPFolio").val(mispedidos[i].idPedido);
           $$("#txtDPFecha").val(mispedidos[i].fechaHoraRegistro);
@@ -352,6 +361,28 @@ function addClickPedido(obj){
     });
 
   });
+}
+function cancelarPedido(){
+  $$("#txtDPFolio").val();
+  $$.ajax({url: sURL, dataType: "json", type: 'POST', datas,
+   beforeSend: function () {
+     app.showPreloader('Guardando Pedido...');
+   },
+   success: function (data) {
+    if(data.length>0){ 
+      app.closeModal(".popup",true);         
+      app.alert("Pedido Guardado correctamente","Exito!");
+
+    }else{
+      app.alert("Error al guardar su pedido intente nuevamente","Error!");
+    }
+    app.hidePreloader();
+  },
+  error: function (e) {
+    app.hidePreloader();
+    app.alert("Error al guardar su pedido.","Error!");
+  }
+});
 }
 
 function info(){
