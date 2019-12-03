@@ -335,7 +335,6 @@ function addClickPedido(obj){
       for (var i = 0; i < mispedidos.length; i++) {
         if(mispedidos[i].idPedido===selPedido){
           var estatustemp="";
-          app.alert(mispedidos[i].estatus)
           if(mispedidos[i].estatus==="1"){
             estatustemp='Registrado';
           }else if(mispedidos[i].estatus==="2"){
@@ -363,8 +362,8 @@ function addClickPedido(obj){
   });
 }
 function cancelarPedido(){
-  $$("#txtDPFolio").val();
-  $$.ajax({url: sURL, dataType: "json", type: 'POST', datas,
+  data={$$("#txtDPFolio").val()};
+  $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
    beforeSend: function () {
      app.showPreloader('Guardando Pedido...');
    },
