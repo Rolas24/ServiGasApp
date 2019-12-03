@@ -362,7 +362,7 @@ function addClickPedido(obj){
   });
 }
 function cancelarPedido(){
-  data={$$("#txtDPFolio").val()};
+  data={accion:"16",idPedido:$$("#txtDPFolio").val()};
   $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
    beforeSend: function () {
      app.showPreloader('Guardando Pedido...');
