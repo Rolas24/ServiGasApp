@@ -13,19 +13,21 @@ function initRegistro(){
 function guardarCliente(){
 	if(validarCliente()){
 		var data = {accion: "1",razonSocial:$$("#txtRegNombre").val(),telefonoCelular:$$("#txtRegTelefono").val(),
-	                correo:$$("#txtRegCorreo").val(),usuario:$$("#txtRegUsuario").val(),contrasena:$$("#txtRegContrasenia").val()};
+		correo:$$("#txtRegCorreo").val(),usuario:$$("#txtRegUsuario").val(),contrasena:$$("#txtRegContrasenia").val()};
 		
-		$$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+		$$.ajax({url: sURL, dataType: "html", type: 'POST', data,
 			beforeSend: function () {
 				app.showPreloader('Guardando...')
 			},
 			success: function (data) {
-				alert(data.existe);
-				if(data.existe!=="1"){					
-					app.alert("Registrado correctamente ahora puede iniciar sesión","Exito!");
+				if(data==="duplicado"){					
+					app.alert("El nombre de usuario ya existe elija otro nombre.","Ya existe");
+					
+				}else if(data==="exito"){
+					app.alert("Registrado Correctamente","Exito.");
 					regresarLogin();
-				}else{
-				 app.alert("El nombre de usuario ya existe elija otro nombre.","Ya existe");
+				}else if(data==="error"){
+					app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error.");
 				}
 				app.hidePreloader();
 			},
@@ -35,9 +37,6 @@ function guardarCliente(){
 			}
 		});
 		
-		//window.localStorage.setItem("sgSucursal", $$("input[name='my-radio']:checked").val());
-		//window.localStorage.setItem("sgURLSucursal", getSucursal($$("input[name='my-radio']:checked").val()));
-		regresarLogin();
 	}
 }
 
