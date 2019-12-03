@@ -20,7 +20,6 @@ function GoogleMap(){
 			$$("#btnLatLng").text(e.latLng.lat());
 			lat=e.latLng.lat();
 		    lng=e.latLng.lng();
-		    app.alert("el gps bien");
 			placeMarkerAndPanTo(e.latLng, map);
 		});
 		obtenerUbicacionActual();
@@ -59,7 +58,6 @@ function obtenerUbicacionActual(){
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 }
 function placeMarkerAndPanTo(latLng, map) {
-	app.alert("aqui mero");
 	marker.setMap(null);
 	marker = new google.maps.Marker({
 		position: latLng,

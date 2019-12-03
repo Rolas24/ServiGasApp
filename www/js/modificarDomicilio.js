@@ -47,6 +47,7 @@ function guardarDomicilio(){
 			success: function (data) {
 				if(data.length>0){					
 					app.alert("Su domicilio fue actualizado correctamente","Exito!");
+					mainView.router.back();	
 				}else{
 					app.alert("Ocurrió un error al guardar. Intente nuevamente.","Error!");
 				}

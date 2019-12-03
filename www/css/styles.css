@@ -13,7 +13,7 @@
    .statusbar-overlay {
    	background: #000000;
    }
-   html, body, #map_canvas {
+   html, body, #map_canvas,#map_canvas_ubicar {
    	height: 100%;
    	margin: 0;
    	padding: 0;

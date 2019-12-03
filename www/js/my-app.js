@@ -7,6 +7,8 @@ var app = new Framework7({
 var $$ = Dom7;
 var selPedido=0;
 var mispedidos=[];
+var pedidoUbicar=0;
+
 var mainView = app.addView('.view-main', {
     // Because we want to use dynamic navbar, we need to enable it for this view:
     dynamicNavbar: true
@@ -52,8 +54,12 @@ $$(document).on('pageInit', function (e) {
 }else if(page.name==='mapa'){
   var map = new GoogleMap();
   map.initialize();
+}else if(page.name==='ubicacionPedido'){
+  var mapubicar = new GoogleMapUbicar();
+  mapubicar.initialize();
 }
 });
+
 function onBackKeyDown() {
  app.alert("okidoki");
 }
@@ -104,13 +110,13 @@ $$("#btnPedidoCilindro").click(function(e){
   e.preventDefault();
   pedido(2);
 });
-$$("#btnPedidoWhatsapp").click(function(e){
+$$("#btnMiDomicilio").click(function(e){
   e.preventDefault();
-  pedidoWhatsapp();
+  mainView.router.loadPage('modificarDomicilio.html');
 });
-$$("#btnPedidoLlamar").click(function(e){
+$$("#btnUbicarMiPedido").click(function(e){
   e.preventDefault();
-  pedidoLlamar(4);
+  getPedidoUbicar();
 });
 
 
@@ -129,6 +135,12 @@ $$("#toolCerrarSesion").click(function(e){
 $$("#toolPedido").click(function(e){
   e.preventDefault();
   pedido(1);
+});
+
+//Eventos Main TAB 3
+$$("#tabInfo").click(function(e){
+  e.preventDefault();
+  info();
 });
 
 function iniciarSesion(){
@@ -164,6 +176,7 @@ function iniciarSesion(){
 }
 
 function cerrarSesion(){
+  $$("#listaMisPedidos").html();
   clearStorage();
   modalSucursal();
 }
@@ -189,16 +202,16 @@ function pedido(pedido){
 
    $$("#btnGuardarPedido").click(function(e){
      e.preventDefault();
-     var data = {accion: "10",idCliente:sIdCliente,idTipoPedido:tipo,idSucursal:"1",
+     var datas = {accion: "10",idCliente:sIdCliente,idTipoPedido:tipo,idSucursal:"1",
      idDomicilio:sIdDomicilio,cantidad:obj.val(),observaciones:$$("#txtPedObservaciones").val()};
      if(validarPedido()){
-       $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+       $$.ajax({url: sURL, dataType: "json", type: 'POST', datas,
          beforeSend: function () {
            app.showPreloader('Guardando Pedido...');
          },
          success: function (data) {
           if(data.length>0){ 
-          app.closeModal(".popup",true);         
+            app.closeModal(".popup",true);         
             app.alert("Pedido Guardado correctamente","Exito!");
 
           }else{
@@ -232,28 +245,37 @@ function getPedidos(){
       $$("#listaMisPedidos").html("");
       var html="";    
       for (var i = 0; i < data.length; i++) {
-        var iconcolor="";
+        var icontemp="";
+        var estatustemp="";
         if(data[i].estatus==="1"){
-          iconcolor='color-yellow';
+          icontemp='estatus_enproceso.png';
+          estatustemp='registrado';
         }else if(data[i].estatus==="2"){
-          iconcolor='color-blue';
+          icontemp='estatus_encamino.png';
+          estatustemp='En camino';
         }else if(data[i].estatus==="3"){
-          iconcolor='color-green';
+          icontemp='estatus_surtido.png';
+          estatustemp='Surtido';
         }else if(data[i].estatus==="4"){
-          iconcolor='color-red';
+          icontemp='cancelado.png';
+          estatustemp='Cancelado';
         }
-        html='<li id="ped'+data[i].idPedido+'" class="item-content" data-idpedido="'+data[i].idPedido+'">'+
-        '<div class="item-media"><i class="icon f7-icons '+iconcolor+'">circle</i></div>'+
-        '<div class="item-inner">'+
-        '<div class="item-title">'+data[i].tipopedido+' / '+data[i].idPedido+'</div>'+
-        '<div class="item-after">'+data[i].fechaHoraRegistro+'</div>'+
+        html='<li id="ped'+data[i].idPedido+'" class="card" data-idpedido="'+data[i].idPedido+'">'+
+        '<div class="card-header">Folio: '+data[i].idPedido+'<strong> '+data[i].fechaHoraRegistro+'</strong></div>'+
+        '<div class="card-content">'+
+        '<div class="card-content-inner">'+
+        'Tipo pedido: '+data[i].tipopedido+'<br>'+
+        'estatus: '+estatustemp+" "+
+        '<img src="../img/'+icontemp+'" width="18" height="18"/>'+
         '</div>'+
-        '</li>';
+        '</div>'+
+        '<div class="card-footer"><a href="#" class="button active">Detalle</a></div>'+
+        '</li>'
         $$("#listaMisPedidos").append(html);
         addClickPedido($$("#ped"+data[i].idPedido));
       }
     }else{
-      app.alert("Sin Pedidos registrados","Error!");
+      app.alert("No se encontro ningun pedido registrado","Sin pedidos");
     }
     app.hidePreloader();
   },
@@ -263,11 +285,39 @@ function getPedidos(){
   }
 });
 }
-function pedidoWhatsapp(){
+function getPedidoUbicar(){
+ var data = {accion: "13",idCliente:sIdCliente};
+ $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
+   beforeSend: function () {
+    app.showPreloader('Espere...');
+  },
+  success: function (data) {
+    if(data.length>0){     
+      mispedidos=data;
+      var existe=false;
+      for (var i = 0; i < data.length; i++) {
+       if(data[i].estatus==="2"){
+        existe=true;
+        pedidoUbicar=data[i].idPedido;
+        break;
+      }
+    }
+    if(existe){
+      mainView.router.loadPage('ubicacionPedido.html');
+    }else{
+      app.alert("Ningun pedido en trayecto","Sin trayectos");
+    }
 
+  }else{
+    app.alert("No se encontro ningun pedido registrado","Sin pedidos");
+  }
+  app.hidePreloader();
+},
+error: function (e) {
+  app.hidePreloader();
+  app.alert("Error al mostrar su historial de pedidos","Error!");
 }
-function pedidoLlamar(){
-
+});
 }
 
 function addClickPedido(obj){
@@ -302,6 +352,19 @@ function addClickPedido(obj){
     });
 
   });
+}
+
+function info(){
+  $$("#txtT3Nombre").val(sNombre);
+  $$("#txtT3Usuario").val(sUsuario);
+  $$("#txtT3Correo").val(sCorreo);
+  $$("#txtT3Telefono").val(sTelefono);
+  $$("#txtT3Calle").val(sCalle);
+  $$("#txtT3Colonia").val(sColonia);
+  $$("#txtT3NumExt").val(sNumExt);
+  $$("#txtT3NumInt").val(sNumInt);
+  $$("#txtT3EntreCalles").val(sEntreCalles);
+
 }
 
 function validarInicioSesion(){

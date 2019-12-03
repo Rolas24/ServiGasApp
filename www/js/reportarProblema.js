@@ -8,16 +8,16 @@ function initReportarProblema(){
 
 function guardarProblema(){
 	if(validarReportarProblema()){
-		app.alert('guardar!');
-		var data = {accion: "1"};
+		var data = {accion: "14", IdCliente:sIdCliente,titulo:$$("#txtRPAsunto").val(),comentario:$$("#txtRPDescripcion").val()};
 		$$.ajax({url: sURL, dataType: "html", type: 'POST', data,
 			beforeSend: function () {
 				app.showPreloader('Reportando problema...')
 			},
 			success: function (data) {
-				if(data==="success"){
-					app.alert("Reporte guardado. Nos comunicaremos con uste para resolver el problema.","Exito!");
-
+				if(data==="1"){
+					app.alert("Reporte guardado. Nos comunicaremos con usted para resolver el problema.","Exito!");
+				}else{
+					app.alert("Ocurrió un error al reportar su problema.","Error!");
 				}
 				app.hidePreloader();
 			},

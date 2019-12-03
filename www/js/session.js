@@ -14,6 +14,7 @@ var sColonia="";
 var sNumInt="";
 var sNumExt="";
 var sEntreCalles="";
+var sUltimoPedido="";
 
 function setSession(){
  sIdCliente=window.localStorage.getItem("sgIdCliente");
