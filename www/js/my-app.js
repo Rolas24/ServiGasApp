@@ -112,7 +112,7 @@ $$("#btnPedidoEstacionario").click(function(e){
 $$("#btnPedidoCilindro").click(function(e){
   e.preventDefault();
   validarPedidoActivo(2);
-    
+
 });
 $$("#btnMiDomicilio").click(function(e){
   e.preventDefault();
@@ -270,17 +270,13 @@ function getPedidos(){
           icontemp='cancelado.png';
           estatustemp='Cancelado';
         }
-        html='<li id="ped'+data[i].idPedido+'" class="card" data-idpedido="'+data[i].idPedido+'">'+
-        '<div class="card-header">Folio: '+data[i].idPedido+'<strong> '+data[i].fechaHoraRegistro+'</strong></div>'+
-        '<div class="card-content">'+
-        '<div class="card-content-inner">'+
-        'Tipo pedido: '+data[i].tipopedido+'<br>'+
-        'estatus: '+estatustemp+" "+
-        '<img src="../img/'+icontemp+'" width="18" height="18"/>'+
+        html='<li id="ped'+data[i].idPedido+'" class="item-content" data-idpedido="'+data[i].idPedido+'">'+
+        '<div class="item-media"><i class="icon f7-icons">cart</i></div>'+
+        '<div class="item-inner">'+
+        '<div class="item-title">Folio: '+data[i].idPedido+'</div>'+
+        '<div class="item-after"><strong>'+data[i].tipopedido+'</strong></div>'+
         '</div>'+
-        '</div>'+
-        '<div class="card-footer"><a href="#" class="button active">Detalle</a></div>'+
-        '</li>'
+        '</li> ';
         $$("#listaMisPedidos").append(html);
         addClickPedido($$("#ped"+data[i].idPedido));
         if(i===1){break;}
@@ -299,30 +295,30 @@ function getPedidos(){
 function getPedidoUbicar(){
  var data = {accion: "13",idCliente:sIdCliente};
  $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
-   beforeSend: function () {
-    app.showPreloader('Espere...');
-  },
-  success: function (data) {
-    if(data.length>0){     
-      mispedidos=data;
-      var existe=false;
-      for (var i = 0; i < data.length; i++) {
-       if(data[i].estatus==="2"){
-        existe=true;
-        pedidoUbicar=data[i].idPedido;
-        break;
-      }
+ beforeSend: function () {
+  app.showPreloader('Espere...');
+},
+success: function (data) {
+  if(data.length>0){     
+    mispedidos=data;
+    var existe=false;
+    for (var i = 0; i < data.length; i++) {
+     if(data[i].estatus==="2"){
+      existe=true;
+      pedidoUbicar=data[i].idPedido;
+      break;
     }
-    if(existe){
-      mainView.router.loadPage('ubicacionPedido.html');
-    }else{
-      app.alert("Ningun pedido en trayecto","Sin trayectos");
-    }
-
-  }else{
-    app.alert("No se encontro ningun pedido registrado","Sin pedidos");
   }
-  app.hidePreloader();
+  if(existe){
+    mainView.router.loadPage('ubicacionPedido.html');
+  }else{
+    app.alert("Ningun pedido en trayecto","Sin trayectos");
+  }
+
+}else{
+  app.alert("No se encontro ningun pedido registrado","Sin pedidos");
+}
+app.hidePreloader();
 },
 error: function (e) {
   app.hidePreloader();
@@ -367,23 +363,23 @@ function addClickPedido(obj){
 function cancelarPedido(){
   data={accion:"16",idPedido:$$("#txtDPFolio").val()};
   $$.ajax({url: sURL, dataType: "json", type: 'POST', data,
-   beforeSend: function () {
-     app.showPreloader('Guardando Pedido...');
-   },
-   success: function (data) {
-    if(data.length>0){ 
-      app.closeModal(".popup",true);         
-      app.alert("Pedido Guardado correctamente","Exito!");
+  beforeSend: function () {
+   app.showPreloader('Guardando Pedido...');
+ },
+ success: function (data) {
+  if(data.length>0){ 
+    app.closeModal(".popup",true);         
+    app.alert("Pedido Guardado correctamente","Exito!");
 
-    }else{
-      app.alert("Error al guardar su pedido intente nuevamente","Error!");
-    }
-    app.hidePreloader();
-  },
-  error: function (e) {
-    app.hidePreloader();
-    app.alert("Error al guardar su pedido.","Error!");
+  }else{
+    app.alert("Error al guardar su pedido intente nuevamente","Error!");
   }
+  app.hidePreloader();
+},
+error: function (e) {
+  app.hidePreloader();
+  app.alert("Error al guardar su pedido.","Error!");
+}
 });
 }
 
@@ -404,37 +400,37 @@ function validarPedidoActivo(tipo){
   bndPedido=true;
   var data = {accion: "16",idCliente:sIdCliente};
   $$.ajax({url: sURL, dataType: "html", type: 'POST', data,
-   beforeSend: function () {
-     app.showPreloader('Validando...');
-   },
-   success: function (data) {
-    app.hidePreloader();
-    if(data==="ESTACIONARIO"){
-      if(tipo===1){
-        app.alert("Ya cuenta con un pedido estacionario en curso","Pedido En camino");
-        bndPedido=false;
-      }
-    }else if(data==="CILINDRO"){
-      if(tipo===2){
-        app.alert("Ya cuenta con un pedido de cilindro en curso","Pedido En camino");
-        bndPedido=false;
-      }
-      
-    }else if(data==="AMBOS"){
-      app.alert("No puede generar pedidos hasta que finalicen los anteriores","Pedidos en camino");
+  beforeSend: function () {
+   app.showPreloader('Validando...');
+ },
+ success: function (data) {
+  app.hidePreloader();
+  if(data==="ESTACIONARIO"){
+    if(tipo===1){
+      app.alert("Ya cuenta con un pedido estacionario en curso","Pedido En camino");
       bndPedido=false;
-    }else if(data==="GUARDAR"){
-      bndPedido=true;
     }
-    if(bndPedido){
-      pedido(tipo);
+  }else if(data==="CILINDRO"){
+    if(tipo===2){
+      app.alert("Ya cuenta con un pedido de cilindro en curso","Pedido En camino");
+      bndPedido=false;
     }
-  },
-  error: function (e) {
-    app.hidePreloader();
-    app.alert("Ocurrió un error. Intente nuevamente.","Error!");
-    return false;
+
+  }else if(data==="AMBOS"){
+    app.alert("No puede generar pedidos hasta que finalicen los anteriores","Pedidos en camino");
+    bndPedido=false;
+  }else if(data==="GUARDAR"){
+    bndPedido=true;
   }
+  if(bndPedido){
+    pedido(tipo);
+  }
+},
+error: function (e) {
+  app.hidePreloader();
+  app.alert("Ocurrió un error. Intente nuevamente.","Error!");
+  return false;
+}
 });
 }
 

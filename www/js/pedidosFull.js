@@ -23,7 +23,7 @@ function initFullPedidos(){
 		'<div class="card-content-inner">'+
 		'Tipo pedido: '+mispedidos[i].tipopedido+'<br>'+
 		'estatus: '+estatustemp+" "+
-		'<img src="../img/'+icontemp+'" width="18" height="18"/>'+
+		'<img src="img/'+icontemp+'" width="18" height="18"/>'+
 		'</div>'+
 		'</div>'+
 		'<div class="card-footer"><a href="#" class="button active">Detalle</a></div>'+
