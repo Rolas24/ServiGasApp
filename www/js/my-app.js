@@ -279,7 +279,7 @@ function getPedidos(){
         '</li> ';
         $$("#listaMisPedidos").append(html);
         addClickPedido($$("#ped"+data[i].idPedido));
-        if(i===1){break;}
+        if(i===4){break;}
       }
     }else{
       app.alert("No se encontro ningun pedido registrado","Sin pedidos");
