@@ -49,6 +49,8 @@ $$(document).on('pageInit', function (e) {
    initModificarDomicilio();   
  }else if(page.name ==='buscarCalle'){
   initBuscarCalle();
+}else if(page.name==='pedidosFull'){
+  initFullPedidos();
 }else if(page.name==='buscarColonia'){
   initBuscarColonia();
 }else if(page.name==='mapa'){
@@ -104,11 +106,13 @@ $$("#btnCerrarSesion").click(function(e){
 //Eventos Main TAB 1
 $$("#btnPedidoEstacionario").click(function(e){
   e.preventDefault();
-  pedido(1);
+  validarPedidoActivo(1);
+
 });
 $$("#btnPedidoCilindro").click(function(e){
   e.preventDefault();
-  pedido(2);
+  validarPedidoActivo(2);
+    
 });
 $$("#btnMiDomicilio").click(function(e){
   e.preventDefault();
@@ -124,6 +128,10 @@ $$("#btnUbicarMiPedido").click(function(e){
 $$("#tabMisPedidos").click(function(){
   getPedidos();
 });
+$$("#btnVerTodos").click(function(e){
+  e.preventDefault();
+  mainView.router.loadPage('pedidosfull.html');
+})
 
 //Eventos ToolBar
 $$("#toolCerrarSesion").click(function(e){
@@ -134,7 +142,7 @@ $$("#toolCerrarSesion").click(function(e){
 
 $$("#toolPedido").click(function(e){
   e.preventDefault();
-  pedido(1);
+  validarPedidoActivo(1);
 });
 
 //Eventos Main TAB 3
@@ -275,6 +283,7 @@ function getPedidos(){
         '</li>'
         $$("#listaMisPedidos").append(html);
         addClickPedido($$("#ped"+data[i].idPedido));
+        if(i===1){break;}
       }
     }else{
       app.alert("No se encontro ningun pedido registrado","Sin pedidos");
@@ -328,10 +337,6 @@ function addClickPedido(obj){
     selPedido=$$(this).attr('data-idpedido');
     $$.get('detallePedido.html',function(data){
       app.popup(data);
-      $$("#btnCancelarPedido").click(function(e){
-        e.preventDefault();
-        cancelarPedido();
-      });
       for (var i = 0; i < mispedidos.length; i++) {
         if(mispedidos[i].idPedido===selPedido){
           var estatustemp="";
@@ -341,10 +346,8 @@ function addClickPedido(obj){
             estatustemp='En Camino';
           }else if(mispedidos[i].estatus==="3"){
             estatustemp='Surtido';
-            $$("#btnCancelarPedido").attr('disabled','disabled');
           }else if(mispedidos[i].estatus==="4"){
             estatustemp='Cancelado';
-            $$("#btnCancelarPedido").attr('disabled','disabled');
           }
           $$("#txtDPFolio").val(mispedidos[i].idPedido);
           $$("#txtDPFecha").val(mispedidos[i].fechaHoraRegistro);
@@ -395,6 +398,44 @@ function info(){
   $$("#txtT3NumInt").val(sNumInt);
   $$("#txtT3EntreCalles").val(sEntreCalles);
 
+}
+
+function validarPedidoActivo(tipo){
+  bndPedido=true;
+  var data = {accion: "16",idCliente:sIdCliente};
+  $$.ajax({url: sURL, dataType: "html", type: 'POST', data,
+   beforeSend: function () {
+     app.showPreloader('Validando...');
+   },
+   success: function (data) {
+    app.hidePreloader();
+    if(data==="ESTACIONARIO"){
+      if(tipo===1){
+        app.alert("Ya cuenta con un pedido estacionario en curso","Pedido En camino");
+        bndPedido=false;
+      }
+    }else if(data==="CILINDRO"){
+      if(tipo===2){
+        app.alert("Ya cuenta con un pedido de cilindro en curso","Pedido En camino");
+        bndPedido=false;
+      }
+      
+    }else if(data==="AMBOS"){
+      app.alert("No puede generar pedidos hasta que finalicen los anteriores","Pedidos en camino");
+      bndPedido=false;
+    }else if(data==="GUARDAR"){
+      bndPedido=true;
+    }
+    if(bndPedido){
+      pedido(tipo);
+    }
+  },
+  error: function (e) {
+    app.hidePreloader();
+    app.alert("Ocurrió un error. Intente nuevamente.","Error!");
+    return false;
+  }
+});
 }
 
 function validarInicioSesion(){
