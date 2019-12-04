@@ -49,8 +49,6 @@ $$(document).on('pageInit', function (e) {
    initModificarDomicilio();   
  }else if(page.name==='pedidosFull'){
   initFullPedidos();
-}else if(page.name==='buscarColonia'){
-  initBuscarColonia();
 }else if(page.name==='mapa'){
   var map = new GoogleMap();
   map.initialize();
@@ -220,7 +218,7 @@ function pedido(pedido){
          success: function (data) {
           if(data.length>0){ 
             app.closeModal(".popup",true);         
-            app.alert("Pedido Guardado correctamente","Exito!");
+            app.alert("Pedido Guardado correctamente. Si desea cancelar su pedido llame al "+sTelSucursal,"Exito!");
 
           }else{
             app.alert("Error al guardar su pedido intente nuevamente","Error!");

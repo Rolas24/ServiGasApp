@@ -15,7 +15,7 @@ var sNumInt="";
 var sNumExt="";
 var sEntreCalles="";
 var sUltimoPedido="";
-
+var sTelSucursal="";
 function setSession(){
  sIdCliente=window.localStorage.getItem("sgIdCliente");
  if (typeof sIdCliente !== 'undefined' && sIdCliente !== null){
@@ -113,64 +113,82 @@ function modalSucursal(){
       text: 'Chihuahua',
       onClick: function() {
         urlSucursal="http://pedidoschihuahua.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal","614-424-2121");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="614-424-2121";   
       }
     },
     {
       text: 'Cuahutemoc',
       onClick: function() {
         urlSucursal="http://pedidoscuauhtemoc.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "625-106-0169");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="625-106-0169";
       }
     },
     {
       text: 'Delicias',
       onClick: function() {
         urlSucursal="http://pedidosdelicias.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "639-472-1700");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="639-472-1700";
       }
     },
     {
       text: 'Camargo',
       onClick: function() {
         urlSucursal="http://pedidoscamargo.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "648-462-0139");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="648-462-0139";
+   
+                   627-522-8550      
       }
     },
     {
       text: 'Jimenez',
       onClick: function() {
         urlSucursal="http://pedidosjimenez.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "629-542-2223");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="629-542-2223";
       }
     },
     {
       text: 'Parral',
       onClick: function() {
         urlSucursal="http://pedidosparral.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "627-522-8500");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="627-522-8500";
       }
     },
     {
       text: 'Casas Grandes',
       onClick: function() {
         urlSucursal="http://pedidoscgrandesdyns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "636-661-4151");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="636-661-4151";
       }
     },
     {
       text: 'CD. Juarez',
       onClick: function() {
         urlSucursal="http://mcomplejo.dyndns.org/Controlador/pedidosAppController.php";
+        window.localStorage.setItem("sgTelSucursal", "656-629-1000");
         window.localStorage.setItem("sgURLSucursal", urlSucursal);
         sURL=urlSucursal;
+        sTelSucursal="656-629-1000";
       }
     },
     ]
