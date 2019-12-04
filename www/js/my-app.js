@@ -47,9 +47,7 @@ $$(document).on('pageInit', function (e) {
    initModificarDatos();
  }else if(page.name === 'modificarDomicilio'){ 
    initModificarDomicilio();   
- }else if(page.name ==='buscarCalle'){
-  initBuscarCalle();
-}else if(page.name==='pedidosFull'){
+ }else if(page.name==='pedidosFull'){
   initFullPedidos();
 }else if(page.name==='buscarColonia'){
   initBuscarColonia();

@@ -28,7 +28,7 @@ function GoogleMap(){
 	$$("#btnAceptarUbicacion").click(function(e){
 		e.preventDefault();
 		$$("#txtMDOUbicacion").val(lat+" "+lng);
-		mainView.router.back();	
+		app.closeModal(".popup",true);  
 	});
 	
 }

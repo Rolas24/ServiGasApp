@@ -8,15 +8,27 @@ function initModificarDomicilio(){
 	app.closePanel();
 	$$("#btnMDBuscarCalle").click(function(e){
 		e.preventDefault();
-		mainView.router.loadPage('buscarCalle.html');
+		$$.get('buscarCalle.html',function(data){
+			app.popup(data);
+			initBuscarCalle();
+		});
+		//mainView.router.loadPage('buscarCalle.html');
 	});
 	$$("#btnMDBuscarColonia").click(function(e){
 		e.preventDefault();
-		mainView.router.loadPage('buscarColonia.html');
+		$$.get('buscarColonia.html',function(data){
+			app.popup(data);
+			initBuscarColonia();
+		});
 	});
 	$$("#btnBuscarUbicacion").click(function(e){
 		e.preventDefault();
-		mainView.router.loadPage('mapa.html');
+		$$.get('mapa.html',function(data){
+			app.popup(data);
+			var map = new GoogleMap();
+			map.initialize();
+		});
+		//mainView.router.loadPage('mapa.html');
 	});
 	$$("#btnMDGuardarDomicilio").click(function(e){
 		e.preventDefault();
@@ -110,5 +122,6 @@ function validarDomicilio(){
 	bnd=bnd && validDifCero(selCalle,"Calle");
 	bnd=bnd && validDifCero(selColonia,"Colonia");
     //bnd=bnd && validDifCero(lat,"Ubicación");
-	return bnd;
+    return bnd;
 }
+

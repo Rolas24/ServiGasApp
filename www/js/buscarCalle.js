@@ -25,6 +25,7 @@ function addClickCalle(obj){
   obj.click(function(){
   	selCalle=$$(this).attr('data-idcalle');
   	$$("#txtMDOCalle").val($$(this).text());
-  	mainView.router.back();	
+  	//mainView.router.back();	
+  	app.closeModal(".popup",true);  
   });
 }

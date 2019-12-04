@@ -27,6 +27,6 @@ function addClickColonia(obj){
   obj.click(function(){
   	selColonia=$$(this).attr('data-idcolonia');
   	$$("#txtMDOColonia").val($$(this).text());
-  	mainView.router.back();	
+  	app.closeModal(".popup",true);  
   });
 }
