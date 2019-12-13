@@ -1,5 +1,6 @@
 var mapUbicar=null;
 var markerUbicar=null;
+var infowindow=null;
 var interval=null;
 function GoogleMapUbicar(){
 	app.closePanel();
@@ -38,7 +39,7 @@ function obtenerUbicacionTiempoReal(){
 			if(data.length>0){
 				$$("#btnUltimaUbicacion").text(data[0].fechaHora);
 				var latLngTemp=new google.maps.LatLng(data[0].latitud,data[0].longitud);
-				crearMarker(latLngTemp,mapUbicar);
+				crearMarker(latLngTemp,mapUbicar,data[0].pendientes,data[0].fechaHora);
 				interval=setInterval(function(){ actualizarUbicacion(); }, 8000);
 			}else{
 				app.alert("No se encontro la ubicación de su pedido","Sin registro");
@@ -60,7 +61,7 @@ function actualizarUbicacion(){
 			if(data.length>0){
 				$$("#btnUltimaUbicacion").text(data[0].fechaHora);
 				var latLngTemp=new google.maps.LatLng(data[0].latitud,data[0].longitud);
-				moverMarker(latLngTemp);
+				moverMarker(latLngTemp,data[0].pendientes,data[0].fechaHora);
 			}
 			app.hidePreloader();
 		},
@@ -71,14 +72,21 @@ function actualizarUbicacion(){
 		}
 	});
 }
-function crearMarker(latLng, mapUbicar) {
+function crearMarker(latLng, mapUbicar,pendientes,fechaHora) {
 	markerUbicar = new google.maps.Marker({
 		position: latLng,
 		icon:'./img/marker.png',
 		map: mapUbicar
 	});
+	infowindow = new google.maps.InfoWindow({
+      content: '<h2>Pedidos Pendientes: '+pendientes+"</h2>"+
+               '<h3>FechaHora Ubicación: '+fechaHora+'</h3>'; 
+    });
+    infowindow.open(mapUbicar, markerUbicar);
 	mapUbicar.panTo(latLng);
 }
-function moverMarker(latlng){
+function moverMarker(latlng,pendientes,fechaHora){
+	infowindow.setContent('<h2>Pedidos Pendientes: 'pendientes+"</h2>"+
+                          '<h3>FechaHora Ubicación: '+fechaHora'</h3>');
  markerUbicar.setPosition(latlng);
 }

@@ -34,6 +34,7 @@ function setSession(){
    sNumInt=window.localStorage.getItem("sgNumInt");
    sNumExt=window.localStorage.getItem("sgNumExt");
    sEntreCalles=window.localStorage.getItem("sgEntreCalles");
+   sTelSucursal=window.localStorage.getItem("sgTelSucursal");
  }
 }
 
