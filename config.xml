@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 
-<widget id="com.rolas.servigasapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.rolas.servigasapp" version="1.0.0" versionCode="2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>ServiGasApp</name>
     <description>
         Aplicación para solicitar gas y aplicar promociones.
@@ -19,7 +19,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <platform name="android">
-        <preference name="android-minSdkVersion" value="26" />
+        <preference name="android-minSdkVersion" value="28" />
         <allow-intent href="market:*" />
     </platform>
     <platform name="ios">
